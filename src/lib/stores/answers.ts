@@ -1,7 +1,12 @@
 import { writable, derived } from 'svelte/store';
 import questionnaire from '$lib/data/questionnaire.json';
+import { cloudSave } from '$lib/supabase';
 
 export const lastSaved = writable<string | null>(null);
+export const cloudStatus = writable<'idle' | 'saving' | 'saved' | 'error'>('idle');
+export const cloudId = writable<string | null>(
+  typeof window !== 'undefined' ? localStorage.getItem('wiseshift_cloud_id') : null
+);
 
 export interface Answer {
   value: any;
@@ -32,9 +37,12 @@ function createAnswersStore() {
   const { subscribe, set, update } = writable<AnswerMap>(loadFromStorage());
 
   let saveTimeout: ReturnType<typeof setTimeout>;
+  let cloudSaveTimeout: ReturnType<typeof setTimeout>;
 
   function saveToStorage(answers: AnswerMap) {
     if (typeof window === 'undefined') return;
+
+    // Local save (debounced 500ms)
     clearTimeout(saveTimeout);
     saveTimeout = setTimeout(() => {
       try {
@@ -49,9 +57,34 @@ function createAnswersStore() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
         lastSaved.set(new Date().toLocaleTimeString());
       } catch (e) {
-        console.warn('Failed to save answers:', e);
+        console.warn('Failed to save locally:', e);
       }
     }, 500);
+
+    // Cloud save (debounced 3s — less frequent to avoid hammering the API)
+    clearTimeout(cloudSaveTimeout);
+    cloudSaveTimeout = setTimeout(async () => {
+      if (Object.keys(answers).length === 0) return;
+      const wiseName = answers['Q1.1']?.value || '';
+      const country = answers['Q4.1']?.value || '';
+
+      cloudStatus.set('saving');
+      let currentCloudId: string | null = null;
+      cloudId.subscribe(v => currentCloudId = v)();
+
+      const result = await cloudSave(currentCloudId, wiseName, country, answers);
+
+      if (result.error) {
+        cloudStatus.set('error');
+        console.warn('Cloud save failed:', result.error);
+      } else {
+        cloudStatus.set('saved');
+        if (result.id && result.id !== currentCloudId) {
+          cloudId.set(result.id);
+          localStorage.setItem('wiseshift_cloud_id', result.id);
+        }
+      }
+    }, 3000);
   }
 
   subscribe(saveToStorage);
@@ -89,7 +122,10 @@ function createAnswersStore() {
       set({});
       if (typeof window !== 'undefined') {
         localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem('wiseshift_cloud_id');
       }
+      cloudId.set(null);
+      cloudStatus.set('idle');
     },
     exportJSON(): string {
       let current: AnswerMap = {};

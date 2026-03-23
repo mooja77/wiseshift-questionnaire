@@ -1,6 +1,7 @@
 <script lang="ts">
   import { currentPage, currentSectionIndex, currentGroupIndex, sections, startQuestionnaire, nextGroup, prevGroup, goToSection } from '$lib/stores/navigation';
-  import { answers, visibleQuestions, lastSaved } from '$lib/stores/answers';
+  import { answers, visibleQuestions, lastSaved, cloudStatus, cloudId } from '$lib/stores/answers';
+  import { cloudList, cloudLoad } from '$lib/supabase';
   import { progress } from '$lib/stores/progress';
   import questionnaire from '$lib/data/questionnaire.json';
 
@@ -14,6 +15,38 @@
   let visible = $derived($visibleQuestions);
   let allAnswers = $derived($answers);
   let savedTime = $derived($lastSaved);
+  let cStatus = $derived($cloudStatus);
+  let cId = $derived($cloudId);
+
+  // Cloud questionnaire list for the welcome page
+  let cloudQuestionnaires = $state<any[]>([]);
+  let loadingCloud = $state(false);
+
+  async function loadCloudList() {
+    loadingCloud = true;
+    const result = await cloudList();
+    if (!result.error) {
+      cloudQuestionnaires = result.data;
+    }
+    loadingCloud = false;
+  }
+
+  async function handleLoadFromCloud(id: string) {
+    const result = await cloudLoad(id);
+    if (result.data) {
+      answers.loadAnswers(result.data.answers as any);
+      cloudId.set(id);
+      localStorage.setItem('wiseshift_cloud_id', id);
+      startQuestionnaire();
+    } else {
+      alert('Failed to load from cloud: ' + result.error);
+    }
+  }
+
+  // Load cloud list on mount
+  if (typeof window !== 'undefined') {
+    loadCloudList();
+  }
 
   // Get questions for current group
   let groupQuestions = $derived(
@@ -223,6 +256,31 @@
       </label>
     </div>
 
+    <!-- Cloud saved questionnaires -->
+    {#if cloudQuestionnaires.length > 0}
+    <div class="mt-6 sm:mt-8">
+      <h3 class="text-sm font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide mb-3">Saved in Cloud</h3>
+      <div class="space-y-2">
+        {#each cloudQuestionnaires as cq}
+        <button
+          onclick={() => handleLoadFromCloud(cq.id)}
+          class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-3 sm:p-4 text-left hover:border-[var(--color-primary)] hover:shadow-sm transition-all"
+        >
+          <div class="flex items-center justify-between gap-2">
+            <div class="min-w-0">
+              <span class="text-sm font-medium text-[var(--color-text)] block truncate">{cq.wise_name || 'Untitled'}</span>
+              <span class="text-xs text-[var(--color-text-secondary)]">
+                {cq.country ? cq.country + ' · ' : ''}{new Date(cq.updated_at).toLocaleDateString()}
+              </span>
+            </div>
+            <span class="text-xs text-[var(--color-primary)] flex-shrink-0">Load →</span>
+          </div>
+        </button>
+        {/each}
+      </div>
+    </div>
+    {/if}
+
     <!-- Footer -->
     <p class="text-center text-[10px] sm:text-xs text-[var(--color-text-secondary)] mt-8 sm:mt-12 leading-relaxed px-2">
       Grant Agreement No. 101178477. Views and opinions expressed are those of the author(s) only
@@ -283,13 +341,27 @@
           ← Back to start
         </button>
       </div>
-      <span class="text-xs font-medium {savedTime ? 'text-[var(--color-success)]' : 'text-[var(--color-text-secondary)]'}">
-        {#if savedTime}
-          Saved at {savedTime} ✓
-        {:else}
-          Auto-save active
-        {/if}
-      </span>
+      <div class="flex items-center gap-2 sm:gap-3 text-xs font-medium">
+        <span class="{savedTime ? 'text-[var(--color-success)]' : 'text-[var(--color-text-secondary)]'}">
+          {#if savedTime}
+            <span class="hidden sm:inline">Saved at {savedTime}</span><span class="sm:hidden">Saved</span> ✓
+          {:else}
+            Auto-save
+          {/if}
+        </span>
+        <span class="hidden sm:inline text-[var(--color-border)]">|</span>
+        <span class="{cStatus === 'saved' ? 'text-[var(--color-primary)]' : cStatus === 'saving' ? 'text-[var(--color-accent)]' : cStatus === 'error' ? 'text-[var(--color-error)]' : 'text-[var(--color-text-secondary)]'}">
+          {#if cStatus === 'saving'}
+            Cloud ↑
+          {:else if cStatus === 'saved'}
+            Cloud ✓
+          {:else if cStatus === 'error'}
+            Cloud ✗
+          {:else}
+            <span class="hidden sm:inline">Cloud idle</span>
+          {/if}
+        </span>
+      </div>
     </header>
 
     <!-- Mobile sidebar overlay -->
