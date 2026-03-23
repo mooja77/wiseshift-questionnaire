@@ -1,0 +1,1197 @@
+{
+  "meta": {
+    "title": "WISESHIFT Organisational Overview Questionnaire",
+    "subtitle": "Based on the ICSEM questionnaire, adapted for the WISESHIFT project",
+    "estimatedTime": "90 minutes",
+    "version": "1.0",
+    "source": "Deliverable 3.1 – Appendix E"
+  },
+  "preamble": {
+    "fields": [
+      { "id": "interviewer_name", "label": "Name of the interviewer", "type": "text" },
+      { "id": "interview_date", "label": "Date of the interview", "type": "date" },
+      { "id": "interviewee_role", "label": "Role of the interviewee in the WISE", "type": "text", "hint": "Please indicate the position held by the interviewee within the enterprise (e.g. manager, director, deputy director…)" }
+    ]
+  },
+  "sections": [
+    {
+      "id": "section1",
+      "number": 1,
+      "title": "General Identity of the Work Integration Social Enterprise (WISE)",
+      "intro": "Let's start with some basics about your organisation — its name, legal form, and the people who work there. Many of these you'll know off the top of your head.",
+      "icon": "building",
+      "groups": [
+        {
+          "id": "s1_identity",
+          "title": "Basic Information",
+          "questions": ["Q1.1", "Q1.2", "Q1.3", "Q1.4", "Q1.5"]
+        },
+        {
+          "id": "s1_founding",
+          "title": "Founding & Legal Form",
+          "questions": ["Q1.6", "Q1.7", "Q1.8"]
+        },
+        {
+          "id": "s1_accreditation",
+          "title": "Accreditations & Status",
+          "questions": ["Q1.9", "Q1.10", "Q1.11"]
+        },
+        {
+          "id": "s1_workforce",
+          "title": "Workforce Composition",
+          "questions": ["Q1.12a", "Q1.12b", "Q1.12c", "Q1.13"]
+        },
+        {
+          "id": "s1_secondment",
+          "title": "Staff Secondment",
+          "questions": ["Q1.14", "Q1.15", "Q1.16", "Q1.17"]
+        },
+        {
+          "id": "s1_integration",
+          "title": "Workers in Integration",
+          "questions": ["Q1.18", "Q1.19", "Q1.20", "Q1.21"]
+        },
+        {
+          "id": "s1_conditions",
+          "title": "Working Conditions & Training",
+          "questions": ["Q1.22", "Q1.23", "Q1.24", "Q1.25"]
+        }
+      ]
+    },
+    {
+      "id": "section2",
+      "number": 2,
+      "title": "Type of Production and Mission",
+      "intro": "Now let's explore what your organisation does and the goals it works toward. Think about both the social mission and the economic activities.",
+      "icon": "target",
+      "groups": [
+        {
+          "id": "s2_mission",
+          "title": "Mission & Goals",
+          "questions": ["Q2.1", "Q2.2"]
+        },
+        {
+          "id": "s2_production",
+          "title": "Goods & Services",
+          "questions": ["Q2.3", "Q2.3_nace"]
+        },
+        {
+          "id": "s2_reporting",
+          "title": "Social Reporting",
+          "questions": ["Q2.4", "Q2.5"]
+        }
+      ]
+    },
+    {
+      "id": "section3",
+      "number": 3,
+      "title": "The Governance and Ownership Structure",
+      "intro": "This section covers how your organisation is governed — its board, members, and networks. If you need to check any documents, you can always come back later.",
+      "icon": "users",
+      "groups": [
+        {
+          "id": "s3_group",
+          "title": "Business Group Structure",
+          "questions": ["Q3.1", "Q3.2", "Q3.3"]
+        },
+        {
+          "id": "s3_governance_noshares",
+          "title": "General Assembly & Board (without shares)",
+          "description": "For WISEs with a GA/AGM but without shares (association or NPO)",
+          "questions": ["Q3.4", "Q3.5", "Q3.6", "Q3.7", "Q3.8_ns", "Q3.9_ns", "Q3.10_ns", "Q3.11_ns", "Q3.12_ns"],
+          "condition": { "question": "Q3.4", "notEquals": "shares" }
+        },
+        {
+          "id": "s3_governance_shares",
+          "title": "General Assembly & Board (with shares)",
+          "description": "For WISEs with a GA/AGM and with shares",
+          "questions": ["Q3.8_s", "Q3.9_s", "Q3.10_s", "Q3.11_s"],
+          "condition": { "question": "Q3.4", "equals": "shares" }
+        },
+        {
+          "id": "s3_other_governance",
+          "title": "Other Governance Bodies",
+          "questions": ["Q3.13"]
+        },
+        {
+          "id": "s3_networks",
+          "title": "Networks & Federations",
+          "questions": ["Q3.14"]
+        }
+      ]
+    },
+    {
+      "id": "section4",
+      "number": 4,
+      "title": "Financial Structure",
+      "intro": "Finally, we'll look at the financial picture. Don't worry if you need to check documents — you can always come back to this section. When information isn't available, just select 'N/A'.",
+      "icon": "chart",
+      "groups": [
+        {
+          "id": "s4_basics",
+          "title": "Currency & Assets",
+          "questions": ["Q4.1", "Q4.2", "Q4.3"]
+        },
+        {
+          "id": "s4_revenue",
+          "title": "Revenue Breakdown",
+          "questions": ["Q4.4a", "Q4.4b", "Q4.5", "Q4.6", "Q4.7", "Q4.8", "Q4.9", "Q4.10"]
+        },
+        {
+          "id": "s4_public_subsidies",
+          "title": "Public Subsidies Detail",
+          "questions": ["Q4.11", "Q4.12", "Q4.13", "Q4.14", "Q4.15", "Q4.16"]
+        },
+        {
+          "id": "s4_labour_policies",
+          "title": "Labour Policies",
+          "questions": ["Q4.17", "Q4.18.1", "Q4.18.2", "Q4.18.3"]
+        },
+        {
+          "id": "s4_service_policies",
+          "title": "Goods/Services Policies",
+          "questions": ["Q4.19", "Q4.19.1", "Q4.19.2"]
+        },
+        {
+          "id": "s4_income",
+          "title": "Net Income & Distribution",
+          "questions": ["Q4.21", "Q4.22", "Q4.23", "Q4.24", "Q4.25", "Q4.26"]
+        },
+        {
+          "id": "s4_capital",
+          "title": "Capital & Liquidation",
+          "questions": ["Q4.29", "Q4.30"]
+        },
+        {
+          "id": "s4_nonmonetary",
+          "title": "Non-Monetary Resources",
+          "questions": ["Q4.31", "Q4.32"]
+        },
+        {
+          "id": "s4_sustainability",
+          "title": "Sustainability Self-Assessment",
+          "questions": ["Q4.33", "Q4.34"]
+        }
+      ]
+    }
+  ],
+  "questions": {
+    "Q1.1": {
+      "id": "Q1.1",
+      "number": "Q1.1",
+      "text": "Name of the WISE",
+      "type": "text",
+      "required": true,
+      "appendixF": "The unit of analysis that should be considered when answering the questionnaire must be an institutional unit/entity, i.e. an organisation that is 'capable, in its own right, of owning goods and assets, incurring liabilities, and engaging in economic activities and transactions with other units'."
+    },
+    "Q1.2": {
+      "id": "Q1.2",
+      "number": "Q1.2",
+      "text": "Address",
+      "type": "text",
+      "required": true
+    },
+    "Q1.3": {
+      "id": "Q1.3",
+      "number": "Q1.3",
+      "text": "Organisation's website (if any)",
+      "type": "text",
+      "required": false
+    },
+    "Q1.4": {
+      "id": "Q1.4",
+      "number": "Q1.4",
+      "text": "Year of reference for the collected data (YYYY)",
+      "type": "year",
+      "required": true,
+      "appendixF": "The year of reference is the year on the basis of which data are collected, most probably 2025 or 2024."
+    },
+    "Q1.5": {
+      "id": "Q1.5",
+      "number": "Q1.5",
+      "text": "Year of creation of the WISE (YYYY)",
+      "type": "year",
+      "required": true,
+      "appendixF": "This year corresponds to the date of creation of the legal entity. However, in case significant economic activity has been carried out without any formal status, this year corresponds to the year of the creation of the organisation as a group of people who started a productive activity."
+    },
+    "Q1.6": {
+      "id": "Q1.6",
+      "number": "Q1.6",
+      "text": "Who actually took the initiative of launching the WISE and could be considered as the founding social entrepreneur(s)?",
+      "hint": "Tick one or more — if the WISE results from a partnership — of the following categories.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "individual", "label": "An individual" },
+        { "value": "group_workers", "label": "A group of workers" },
+        { "value": "private_business", "label": "A private business" },
+        { "value": "governmental_agency", "label": "A governmental agency" },
+        { "value": "association", "label": "An association/non-profit/voluntary organisation/advocacy organisation" },
+        { "value": "foundation", "label": "A foundation" },
+        { "value": "cooperative", "label": "A cooperative" },
+        { "value": "social_enterprise", "label": "A social enterprise" },
+        { "value": "social_movement", "label": "A social movement" },
+        { "value": "neighbourhood_group", "label": "A group of inhabitants of a neighbourhood" },
+        { "value": "citizens_group", "label": "A group of citizens/individuals" },
+        { "value": "second_level_npo", "label": "A second-level non-profit organisation (Consortium, umbrella organisation, etc.)" },
+        { "value": "not_identified", "label": "Not identified" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "required": true
+    },
+    "Q1.7": {
+      "id": "Q1.7",
+      "number": "Q1.7",
+      "text": "What is the legal form as specified by the law in your country?",
+      "type": "text",
+      "required": true
+    },
+    "Q1.8": {
+      "id": "Q1.8",
+      "number": "Q1.8",
+      "text": "How do you qualify the legal form of the WISE?",
+      "hint": "Tick one or more of the following categories.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "dedicated_se_form", "label": "Specific legal form dedicated to social enterprise / WISE", "hasTextField": true, "textFieldHint": "Please provide both the name in the country's language and in English" },
+        { "value": "cooperative", "label": "Cooperative" },
+        { "value": "association", "label": "Association/Voluntary organisation/Non-profit organisation" },
+        { "value": "mutual", "label": "Mutual" },
+        { "value": "foundation", "label": "Foundation" },
+        { "value": "charity", "label": "Charity" },
+        { "value": "limited_company", "label": "Limited corporation/company" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "required": true,
+      "appendixF": "This list of legal forms is a general typology of some broad types of legal forms/categories; some might not exist in your country. Specific legal forms dedicated to social enterprise are for example those of 'Community Interest Company', 'social cooperative', etc."
+    },
+    "Q1.9": {
+      "id": "Q1.9",
+      "number": "Q1.9",
+      "text": "If, in addition to the legal form, the WISE has a special status/qualification or is accredited, registered or certified by public bodies, please specify.",
+      "hint": "Give the two most important accreditations/certifications if there are more than two. Provide both the name in the country's language and the English translation.",
+      "type": "repeating_accreditation",
+      "maxItems": 2,
+      "allowNone": true,
+      "fields": [
+        { "id": "country_language", "label": "In the country's language", "type": "text" },
+        { "id": "english_translation", "label": "English translation", "type": "text" }
+      ],
+      "appendixF": "These public accreditations/certifications/registrations are particularly interesting when they lead to some tax exemptions, public subsidies or other advantages. However, please list them even if this is not the case."
+    },
+    "Q1.10": {
+      "id": "Q1.10",
+      "number": "Q1.10",
+      "text": "If the WISE is accredited or certified by private bodies, please specify the accreditation/certification.",
+      "hint": "Give the two most important if there are more than two. Provide both the name in the country's language and the English translation.",
+      "type": "repeating_accreditation",
+      "maxItems": 2,
+      "allowNone": true,
+      "fields": [
+        { "id": "country_language", "label": "In the country's language", "type": "text" },
+        { "id": "english_translation", "label": "English translation", "type": "text" }
+      ],
+      "appendixF": "The SE can be accredited, certified or registered by private bodies or federations such as WISE networks, organic production networks, solidarity and social economy networks…"
+    },
+    "Q1.11": {
+      "id": "Q1.11",
+      "number": "Q1.11",
+      "text": "Is the WISE…",
+      "hint": "Tick only one box.",
+      "type": "single_tick",
+      "options": [
+        { "value": "single_unit", "label": "An institutional unit without any decentralised establishment" },
+        { "value": "multiple_establishments", "label": "An institutional unit with several establishments" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "required": true,
+      "appendixF": "The objective of this question is to identify if the SE has several establishments that perform production activities, possibly on different sites."
+    },
+    "Q1.12a": {
+      "id": "Q1.12a",
+      "number": "Q1.12a",
+      "text": "Full-time Equivalent (FTEs) paid workforce with a labour contract",
+      "groupLabel": "Composition of workforce",
+      "groupHint": "What is the composition of the WISE's workforce as of a specific date?",
+      "type": "number",
+      "min": 0,
+      "step": 0.5,
+      "required": true,
+      "appendixF": "The number of full-time equivalents (FTEs) equals the number of employees working full-time plus the number of employees on part-time schedules converted to a full-time basis. The full-time basis is generally defined by labour legislation."
+    },
+    "Q1.12b": {
+      "id": "Q1.12b",
+      "number": "Q1.12b",
+      "text": "Full-time Equivalent (FTEs) workforce with support needs, disadvantaged workers without a labour contract but with another type of status",
+      "hint": "Apprenticeship, traineeship, work experience placement, etc.",
+      "type": "number",
+      "min": 0,
+      "step": 0.5,
+      "required": true,
+      "appendixF": "Workers in need of assistance (WSN) are disadvantaged workers who are at the heart of WISE's mission: these disadvantaged individuals whom WISE seeks to reintegrate through productive activity."
+    },
+    "Q1.12c": {
+      "id": "Q1.12c",
+      "number": "Q1.12c",
+      "text": "How many volunteers are involved in the WISE, if any?",
+      "hint": "Including Board's members who sit on the Board without being paid. Outside workforce with support needs.",
+      "type": "volunteer_count",
+      "fields": [
+        { "id": "vol_10plus", "label": "Number of volunteers working 10 or more hours/month", "type": "number" },
+        { "id": "vol_under10", "label": "Number of volunteers working less than 10 hours/month", "type": "number" }
+      ],
+      "appendixF": "When Board members are volunteers, as it is often the case in NPOs, please do not forget to include them in the overall estimation."
+    },
+    "Q1.13": {
+      "id": "Q1.13",
+      "number": "Q1.13",
+      "text": "What are the statuses of the workers in integration/with support needs?",
+      "hint": "Please specify the share (%) over the total number of workers with support needs.",
+      "type": "percentage_table",
+      "sumTo": 100,
+      "options": [
+        { "value": "fixed_term", "label": "Fixed-term contract" },
+        { "value": "permanent", "label": "Permanent contract" },
+        { "value": "apprenticeship", "label": "Apprenticeship" },
+        { "value": "traineeship", "label": "Traineeship" },
+        { "value": "volunteering", "label": "Volunteering / work experience placement" },
+        { "value": "other", "label": "Other contract type", "hasTextField": true }
+      ]
+    },
+    "Q1.14": {
+      "id": "Q1.14",
+      "number": "Q1.14",
+      "text": "Is there a minimum of workers with support needs (WSNs) required by the law and/or accreditation scheme in the WISE?",
+      "type": "yes_no",
+      "required": true
+    },
+    "Q1.15": {
+      "id": "Q1.15",
+      "number": "Q1.15",
+      "text": "If yes, what is the threshold?",
+      "type": "text_with_fields",
+      "fields": [
+        { "id": "threshold_pct", "label": "Threshold (%)", "type": "number", "suffix": "%" },
+        { "id": "legal_reference", "label": "Legal reference", "type": "text" }
+      ],
+      "condition": { "question": "Q1.14", "equals": "yes" }
+    },
+    "Q1.16": {
+      "id": "Q1.16",
+      "number": "Q1.16",
+      "text": "How many members of staff seconded by another organisation are there in the WISE?",
+      "type": "secondment",
+      "fields": [
+        { "id": "has_secondment", "label": "None", "type": "checkbox" },
+        { "id": "count", "label": "Number of members of staff seconded", "type": "number" },
+        { "id": "ftes", "label": "If known, total of Full-Time Equivalents (FTEs)", "type": "number" }
+      ],
+      "appendixF": "The term 'secondment' covers the situation whereby an employee or a group of employees is assigned on a temporary basis to work for another organisation."
+    },
+    "Q1.17": {
+      "id": "Q1.17",
+      "number": "Q1.17",
+      "text": "Which type(s) of organisation(s) second staff to the WISE?",
+      "hint": "Tick one or more of the following categories.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "private_businesses", "label": "Private businesses" },
+        { "value": "public_entities", "label": "Public entities" },
+        { "value": "associations", "label": "Associations/Non-profit/Voluntary organisations" },
+        { "value": "foundations", "label": "Foundations" },
+        { "value": "cooperatives", "label": "Cooperatives" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "condition": { "question": "Q1.16", "field": "has_secondment", "equals": false }
+    },
+    "Q1.18": {
+      "id": "Q1.18",
+      "number": "Q1.18",
+      "text": "Which are the target group(s) of workers with support needs?",
+      "hint": "Choose all that apply.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "ethnic_groups", "label": "Ethnic group(s)" },
+        { "value": "minority_groups", "label": "Minority group(s) (e.g. Roma, Sinti)" },
+        { "value": "refugees", "label": "Refugees / asylum seekers" },
+        { "value": "homeless", "label": "Homeless persons" },
+        { "value": "long_term_unemployed", "label": "People in long-term unemployment" },
+        { "value": "substance_disorders", "label": "Persons with substance use disorders" },
+        { "value": "psychosocial_disabilities", "label": "Persons with psycho-social disabilities and/or mental illnesses" },
+        { "value": "intellectual_disabilities", "label": "Persons with intellectual and/or learning disabilities" },
+        { "value": "physical_disabilities", "label": "Persons with physical and/or sensory disabilities" },
+        { "value": "young_adults", "label": "Young adults (18-25 years)" },
+        { "value": "neets", "label": "NEETs (persons aged 16-24 not in education, employment, or training)" },
+        { "value": "older_adults", "label": "Old adults (more than 55 years old)" },
+        { "value": "convicts", "label": "Convicts / Former convicts" },
+        { "value": "women_violence", "label": "Women survivors of violence" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "required": true
+    },
+    "Q1.19": {
+      "id": "Q1.19",
+      "number": "Q1.19",
+      "text": "What model of integration of workers with support needs does your WISE promote?",
+      "type": "single_tick",
+      "options": [
+        { "value": "transitional", "label": "Transitional model: it creates transitional occupations that provide work experience and training to the workers with support needs for a limited period of time before the worker moves on to the regular labour market" },
+        { "value": "permanent", "label": "Permanent model: it creates permanent job positions for workers with support needs" },
+        { "value": "mixed", "label": "A mixed model favouring both transitional and/or permanent occupations, depending on the profiles and the needs of workers with support needs" }
+      ],
+      "required": true
+    },
+    "Q1.20": {
+      "id": "Q1.20",
+      "number": "Q1.20",
+      "text": "For the transitional model (if any), what is the expected (average) duration of the stay in the WISE?",
+      "type": "single_tick",
+      "options": [
+        { "value": "less_3m", "label": "Less than 3 months" },
+        { "value": "3_6m", "label": "3–6 months" },
+        { "value": "6_12m", "label": "6–12 months" },
+        { "value": "12_24m", "label": "12–24 months" },
+        { "value": "over_24m", "label": "> 24 months" },
+        { "value": "na", "label": "N/A" }
+      ],
+      "condition": { "question": "Q1.19", "notEquals": "permanent" }
+    },
+    "Q1.21": {
+      "id": "Q1.21",
+      "number": "Q1.21",
+      "text": "Is this a legal requirement?",
+      "type": "yes_no"
+    },
+    "Q1.22": {
+      "id": "Q1.22",
+      "number": "Q1.22",
+      "text": "Please indicate if and to what extent the following statements correctly describe the reasons why your WISE is integrating workers with support needs.",
+      "type": "likert_matrix",
+      "scale": [
+        { "value": 1, "label": "Not at all" },
+        { "value": 2, "label": "To a small extent" },
+        { "value": 3, "label": "To a moderate extent" },
+        { "value": 4, "label": "To a large extent" }
+      ],
+      "statements": [
+        { "id": "disability_support", "text": "Integrating to work persons with particular support needs (e.g., disability)" },
+        { "id": "vulnerable_workers", "text": "Providing employment to any vulnerable workers" },
+        { "id": "social_drives_economic", "text": "The social mission drives the economic activity" },
+        { "id": "economic_drives_social", "text": "The economic activity drives the social mission" }
+      ]
+    },
+    "Q1.23": {
+      "id": "Q1.23",
+      "number": "Q1.23",
+      "text": "How are the workers in integration/with support needs remunerated?",
+      "hint": "Please specify the share (%) over the total workforce of workers with support needs.",
+      "type": "percentage_table",
+      "sumTo": 100,
+      "options": [
+        { "value": "below_minimum", "label": "Below statutory minimum wage (supported scheme)" },
+        { "value": "at_minimum", "label": "At statutory minimum wage" },
+        { "value": "above_minimum", "label": "Above minimum wage" }
+      ]
+    },
+    "Q1.24": {
+      "id": "Q1.24",
+      "number": "Q1.24",
+      "text": "Does the worker in integration/with support needs benefit from training?",
+      "hint": "Several answers possible.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "no_training", "label": "No training component" },
+        { "value": "informal", "label": "Informal on-the-job training" },
+        { "value": "formal_internal", "label": "Formal internal training" },
+        { "value": "external_certified", "label": "External certified training" }
+      ]
+    },
+    "Q1.25": {
+      "id": "Q1.25",
+      "number": "Q1.25",
+      "text": "What type of support services does your WISE deliver?",
+      "type": "single_tick",
+      "options": [
+        { "value": "integration_only", "label": "Support services exclusively aimed at facilitating the work integration of workers with support needs" },
+        { "value": "wide_set", "label": "In addition to work integration support services, a wide set of services aimed at improving other dimensions of the life of workers with support needs (health, housing, administrative support, etc.)" }
+      ]
+    },
+    "Q2.1": {
+      "id": "Q2.1",
+      "number": "Q2.1",
+      "text": "In which category(ies) would you classify the mission/the goals of the WISE?",
+      "hint": "Choose all that apply (max. 5), ranking them by order of importance — '1' being the most important and '5', the least important. In line with Sustainable Development Goals and Doughnut Economics.",
+      "type": "ranking_multi",
+      "maxSelections": 5,
+      "options": [
+        { "value": "food", "label": "Food – Improving access to sufficient and nutritious food" },
+        { "value": "health", "label": "Health – Providing access to healthcare and physical and mental well-being" },
+        { "value": "education", "label": "Education & Training – Delivering quality education/training and learning opportunities" },
+        { "value": "income_work", "label": "Income & Work – Creating and access to decent jobs" },
+        { "value": "peace_justice", "label": "Peace & Justice – Promoting personal safety, rule of law, and justice" },
+        { "value": "political_voice", "label": "Political Voice – Enabling participation in decision-making and democracy" },
+        { "value": "social_equity", "label": "Social Equity – Reducing inequality and promoting social inclusion" },
+        { "value": "gender_equality", "label": "Gender Equality – Advancing equal rights and opportunities for all" },
+        { "value": "housing", "label": "Housing – Ensuring safe and affordable shelter" },
+        { "value": "networks", "label": "Networks – Strengthening social support, community, and access to information" },
+        { "value": "energy", "label": "Energy – Providing affordable, reliable, and clean energy access" },
+        { "value": "responsible_consumption", "label": "Responsible Consumption & Production – Promoting sustainable or circular practices" },
+        { "value": "climate_action", "label": "Climate Action – Contributing to climate mitigation or adaptation" },
+        { "value": "life_on_land", "label": "Life on Land – Restoring terrestrial ecosystems and biodiversity" },
+        { "value": "generate_funds_parent", "label": "To generate funds for a parent organisation" },
+        { "value": "economic_viability", "label": "To achieve and sustain the economic/financial viability of the SE through earned income" },
+        { "value": "financial_return", "label": "To reach a certain financial return on financial investment" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ]
+    },
+    "Q2.2": {
+      "id": "Q2.2",
+      "number": "Q2.2",
+      "text": "Which group(s) does the WISE target through its mission?",
+      "hint": "Choose all that apply (max. 3), ranking them by order of importance — '1' being the most important and '3', the least important.",
+      "type": "ranking_multi",
+      "maxSelections": 3,
+      "options": [
+        { "value": "wsn_workers", "label": "Workers with support needs of the WISE" },
+        { "value": "other_workers", "label": "Other workers of the WISE" },
+        { "value": "customers", "label": "Customers/users of the good or service provided by the SE" },
+        { "value": "providers", "label": "Providers/suppliers of the SE" },
+        { "value": "distributors", "label": "Distributors of the good or service provided by the WISE" },
+        { "value": "investors", "label": "Investors in the WISE" },
+        { "value": "community", "label": "Community/territory at all" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ]
+    },
+    "Q2.3": {
+      "id": "Q2.3",
+      "number": "Q2.3",
+      "text": "What are the goods or services produced/provided by the WISE?",
+      "hint": "In case there is more than one type of good or service, please list, by order of importance, the 3 major production/provision activities.",
+      "type": "repeating_service",
+      "maxItems": 3,
+      "fields": [
+        { "id": "description", "label": "Description of the good or service", "type": "textarea" },
+        { "id": "pricing", "label": "The good or service is available to customers/users…", "type": "multi_tick", "options": [
+          { "value": "market_price", "label": "At a market price" },
+          { "value": "below_market", "label": "Below the market price" },
+          { "value": "above_market", "label": "Above the market price" },
+          { "value": "free", "label": "Free of charge" },
+          { "value": "other", "label": "Other", "hasTextField": true }
+        ]}
+      ]
+    },
+    "Q2.3_nace": {
+      "id": "Q2.3_nace",
+      "number": "Q2.3 (NACE)",
+      "text": "Please select and rank the economic activities of your WISE in the NACE classification.",
+      "hint": "According to the importance of the WISE's resources devoted to the activity. Pick up to 3 main activities.",
+      "type": "nace_selector",
+      "maxSelections": 3
+    },
+    "Q2.4": {
+      "id": "Q2.4",
+      "number": "Q2.4",
+      "text": "Does your organisation draw up a social report?",
+      "type": "yes_no"
+    },
+    "Q2.5": {
+      "id": "Q2.5",
+      "number": "Q2.5",
+      "text": "If yes, please specify why.",
+      "type": "single_tick",
+      "options": [
+        { "value": "required_by_law", "label": "The drafting of a social report is required by law" },
+        { "value": "voluntary", "label": "The social report is drafted on a voluntary basis" }
+      ],
+      "condition": { "question": "Q2.4", "equals": "yes" }
+    },
+    "Q3.1": {
+      "id": "Q3.1",
+      "number": "Q3.1",
+      "text": "Is the WISE part of a business group?",
+      "type": "yes_no",
+      "required": true,
+      "appendixF": "The objective of these questions is to determine if the SE is part of a group and, if so, which place the SE has in such a group. An institutional unit is a subsidiary unit of a parent organisation when this organisation owns more than half of the shares or/and has more than half of the seats on the Board of this unit."
+    },
+    "Q3.2": {
+      "id": "Q3.2",
+      "number": "Q3.2",
+      "text": "Is the WISE…",
+      "hint": "Tick only one box.",
+      "type": "single_tick",
+      "options": [
+        { "value": "subsidiary", "label": "An institutional unit that is either the only subsidiary or one among several subsidiaries of a parent organisation" },
+        { "value": "head", "label": "An institutional unit that is the head of one or several institutional unit(s)/subsidiary(ies)" },
+        { "value": "complex", "label": "An institutional unit within a more complex set of relations" }
+      ],
+      "condition": { "question": "Q3.1", "equals": "yes" }
+    },
+    "Q3.3": {
+      "id": "Q3.3",
+      "number": "Q3.3",
+      "text": "If the WISE is a subsidiary of a parent organisation, how would you characterise this parent organisation?",
+      "hint": "Tick one or more of the following categories.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "dedicated_se_form", "label": "Specific legal form dedicated to social enterprise", "hasTextField": true },
+        { "value": "cooperative", "label": "Cooperative" },
+        { "value": "association", "label": "Association/Voluntary organisation/Non-profit organisation" },
+        { "value": "mutual", "label": "Mutual" },
+        { "value": "foundation", "label": "Foundation" },
+        { "value": "charity", "label": "Charity" },
+        { "value": "limited_company", "label": "Limited corporation/company" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "condition": { "question": "Q3.1", "equals": "yes" }
+    },
+    "Q3.4": {
+      "id": "Q3.4",
+      "number": "Q3.4",
+      "text": "What type of governance structure does the WISE have?",
+      "hint": "This determines which set of governance questions apply.",
+      "type": "single_tick",
+      "options": [
+        { "value": "no_shares", "label": "GA/AGM without shares (association or NPO)" },
+        { "value": "shares", "label": "GA/AGM with shares (cooperative or company)" }
+      ],
+      "required": true
+    },
+    "Q3.8_ns": {
+      "id": "Q3.8_ns",
+      "number": "Q3.8",
+      "variant": "no_shares",
+      "text": "How many individuals (including those representing institutional members) are members of the GA/AGM?",
+      "type": "number",
+      "min": 0,
+      "condition": { "question": "Q3.4", "equals": "no_shares" }
+    },
+    "Q3.9_ns": {
+      "id": "Q3.9_ns",
+      "number": "Q3.9",
+      "variant": "no_shares",
+      "text": "What are the most represented groups (maximum 5) in the GA/AGM?",
+      "hint": "Please list by order of importance: 1 = most important.",
+      "type": "ranking_text",
+      "maxItems": 5,
+      "condition": { "question": "Q3.4", "equals": "no_shares" }
+    },
+    "Q3.10_ns": {
+      "id": "Q3.10_ns",
+      "number": "Q3.10",
+      "variant": "no_shares",
+      "text": "How is the voting power distributed in the GA/AGM?",
+      "type": "multi_tick",
+      "options": [
+        { "value": "one_member_one_vote", "label": "\"One member, one vote\" principle" },
+        { "value": "fixed_proportions", "label": "Fixed proportions of all votes are allocated to (some) voting groups" },
+        { "value": "limits", "label": "Some limits are put on the voting power of certain/all voting groups" },
+        { "value": "observers", "label": "Some members are observers without voting power" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "condition": { "question": "Q3.4", "equals": "no_shares" }
+    },
+    "Q3.11_ns": {
+      "id": "Q3.11_ns",
+      "number": "Q3.11",
+      "variant": "no_shares",
+      "text": "Who sits on the Board of the WISE?",
+      "hint": "In the right-hand column, please identify the most influential types of members. Tick maximum 3 groups.",
+      "type": "board_matrix",
+      "condition": { "question": "Q3.4", "equals": "no_shares" }
+    },
+    "Q3.12_ns": {
+      "id": "Q3.12_ns",
+      "number": "Q3.12",
+      "variant": "no_shares",
+      "text": "Regarding Board members who are not working in the WISE, please classify them among the sectors to which they belong.",
+      "hint": "Private for-profit / Public / Third sector – civil society. Identify the most influential group (tick max 1).",
+      "type": "board_sector_matrix",
+      "sectors": [
+        { "value": "private", "label": "Members belonging to private companies" },
+        { "value": "public", "label": "Members belonging to governmental/public agencies" },
+        { "value": "civil_society", "label": "Members belonging to civil society (associations/voluntary org./non-profit org./foundations/cooperatives)" },
+        { "value": "other", "label": "Others", "hasTextField": true }
+      ],
+      "condition": { "question": "Q3.4", "equals": "no_shares" },
+      "appendixF": "When a person could be included in several groups, please give priority to the group that can be considered as best reflecting her/his main 'identity'. The 'most influential group' means those who shape direction, control resources, or strongly sway decisions."
+    },
+    "Q3.8_s": {
+      "id": "Q3.8_s",
+      "number": "Q3.8",
+      "variant": "shares",
+      "text": "How many individuals (including those representing institutional members) are members of the GA/AGM?",
+      "type": "number",
+      "min": 0,
+      "condition": { "question": "Q3.4", "equals": "shares" }
+    },
+    "Q3.9_s": {
+      "id": "Q3.9_s",
+      "number": "Q3.9",
+      "variant": "shares",
+      "text": "Which groups of shareholders/cooperative associates hold the largest proportion of shares?",
+      "hint": "Please list by order of importance according to proportion of shares: 1 = most important.",
+      "type": "ranking_text",
+      "maxItems": 3,
+      "condition": { "question": "Q3.4", "equals": "shares" }
+    },
+    "Q3.10_s": {
+      "id": "Q3.10_s",
+      "number": "Q3.10",
+      "variant": "shares",
+      "text": "How is the voting power distributed in the GA/AGM?",
+      "type": "multi_tick",
+      "options": [
+        { "value": "by_shares", "label": "According to the number of shares" },
+        { "value": "shares_upper_limit", "label": "According to the number of shares, with an upper limit" },
+        { "value": "one_member_one_vote", "label": "\"One member, one vote\" principle" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "condition": { "question": "Q3.4", "equals": "shares" }
+    },
+    "Q3.11_s": {
+      "id": "Q3.11_s",
+      "number": "Q3.11",
+      "variant": "shares",
+      "text": "Who sits on the Board of the WISE?",
+      "hint": "In the right-hand column, please identify the most influential groups of members. Tick maximum 3 groups.",
+      "type": "board_matrix",
+      "condition": { "question": "Q3.4", "equals": "shares" }
+    },
+    "Q3.13": {
+      "id": "Q3.13",
+      "number": "Q3.13",
+      "text": "Is (Are) there any other governance body(ies) which you consider important to fulfil the social or environmental mission of the SE?",
+      "type": "governance_bodies",
+      "maxItems": 2,
+      "fields": [
+        { "id": "name", "label": "What is this governance body called?", "type": "text" },
+        { "id": "mission", "label": "What is the mission or role of this governance body?", "type": "textarea" },
+        { "id": "groups", "label": "What are the most represented groups? (max 3, by order of importance)", "type": "ranking_text", "maxItems": 3 }
+      ],
+      "appendixF": "'Other governance bodies' may refer to quite diverse governance initiatives. For instance, managers of several SEs which often collaborate may meet formally or informally every week or month."
+    },
+    "Q3.14": {
+      "id": "Q3.14",
+      "number": "Q3.14",
+      "text": "Does the WISE belong to regional/national/international formal networks, umbrella organisations, federative bodies?",
+      "type": "networks",
+      "maxItems": 3,
+      "fields": [
+        { "id": "name_local", "label": "Name in the country's language", "type": "text" },
+        { "id": "name_english", "label": "Translation in English", "type": "text" },
+        { "id": "purposes", "label": "Main purposes of this network", "type": "multi_tick", "options": [
+          { "value": "advocacy", "label": "Advocacy" },
+          { "value": "services", "label": "Providing services (technical support, financial services…)" },
+          { "value": "information", "label": "Information sharing" },
+          { "value": "other", "label": "Other", "hasTextField": true }
+        ]}
+      ]
+    },
+    "Q4.1": {
+      "id": "Q4.1",
+      "number": "Q4.1",
+      "text": "National/local currency used for the financial statements",
+      "type": "text",
+      "required": true,
+      "placeholder": "e.g. EUR, GBP, SEK"
+    },
+    "Q4.2": {
+      "id": "Q4.2",
+      "number": "Q4.2",
+      "text": "Total assets",
+      "hint": "From the Statement of Financial Position/Balance Sheet.",
+      "type": "currency",
+      "appendixF": "Assets are economic resources controlled by an entity as a result of past transactions or events and from which future economic benefits may be obtained."
+    },
+    "Q4.3": {
+      "id": "Q4.3",
+      "number": "Q4.3",
+      "text": "Total net assets",
+      "hint": "Net assets are equivalent to total assets minus total liabilities.",
+      "type": "currency"
+    },
+    "Q4.4a": {
+      "id": "Q4.4a",
+      "number": "Q4.4a",
+      "text": "Sales to private and public customers",
+      "groupLabel": "Revenues of the WISE",
+      "type": "currency"
+    },
+    "Q4.4b": {
+      "id": "Q4.4b",
+      "number": "Q4.4b",
+      "text": "Of which: public sales account for",
+      "hint": "Subset of Q4.4a — how much of total sales comes from public customers?",
+      "type": "currency"
+    },
+    "Q4.5": {
+      "id": "Q4.5",
+      "number": "Q4.5",
+      "text": "Public grants/subsidies (money coming from public entities except sales)",
+      "type": "currency"
+    },
+    "Q4.6": {
+      "id": "Q4.6",
+      "number": "Q4.6",
+      "text": "Investment income (rental of buildings, interest or dividends of financial assets…)",
+      "type": "currency"
+    },
+    "Q4.7": {
+      "id": "Q4.7",
+      "number": "Q4.7",
+      "text": "Philanthropic monetary resources (gifts, donations, private grants…)",
+      "type": "currency"
+    },
+    "Q4.8": {
+      "id": "Q4.8",
+      "number": "Q4.8",
+      "text": "Membership income",
+      "type": "currency"
+    },
+    "Q4.9": {
+      "id": "Q4.9",
+      "number": "Q4.9",
+      "text": "Other revenue",
+      "hint": "Please specify.",
+      "type": "currency",
+      "hasTextField": true
+    },
+    "Q4.10": {
+      "id": "Q4.10",
+      "number": "Q4.10",
+      "text": "Total revenue",
+      "hint": "Sum of Q4.4a through Q4.9.",
+      "type": "currency",
+      "computed": true,
+      "formula": "Q4.4a + Q4.5 + Q4.6 + Q4.7 + Q4.8 + Q4.9"
+    },
+    "Q4.11": {
+      "id": "Q4.11",
+      "number": "Q4.11",
+      "text": "Public subsidies related to the number of workers with support needs employed",
+      "groupLabel": "Grants and subsidies from public entities (detail)",
+      "type": "currency"
+    },
+    "Q4.12": {
+      "id": "Q4.12",
+      "number": "Q4.12",
+      "text": "Public subsidies related to the number of supporters (tutors and/or job coaches)",
+      "type": "currency"
+    },
+    "Q4.13": {
+      "id": "Q4.13",
+      "number": "Q4.13",
+      "text": "Public grants linked to the work integration mission (independent from the number of WSN and supporters)",
+      "type": "currency"
+    },
+    "Q4.14": {
+      "id": "Q4.14",
+      "number": "Q4.14",
+      "text": "Public grants linked to the type of goods or services provided",
+      "type": "currency"
+    },
+    "Q4.15": {
+      "id": "Q4.15",
+      "number": "Q4.15",
+      "text": "Project-based grants (funded through regional or European founding schemes)",
+      "type": "currency"
+    },
+    "Q4.16": {
+      "id": "Q4.16",
+      "number": "Q4.16",
+      "text": "Other public grants",
+      "type": "currency"
+    },
+    "Q4.17": {
+      "id": "Q4.17",
+      "number": "Q4.17",
+      "text": "Do you benefit from any labour policies to support the mission of integration?",
+      "type": "yes_no",
+      "required": true
+    },
+    "Q4.18.1": {
+      "id": "Q4.18.1",
+      "number": "Q4.18.1",
+      "text": "Labour policy #1",
+      "type": "policy_form",
+      "fields": [
+        { "id": "name", "label": "Name of the policy", "type": "text" },
+        { "id": "types", "label": "Type of support", "type": "multi_tick", "options": [
+          { "value": "wage_subsidies_wsn", "label": "Wage or employment subsidies for WSN" },
+          { "value": "social_security_wsn", "label": "Exemption or reduction from social security/payroll contributions for WSN" },
+          { "value": "wage_subsidies_supporters", "label": "Wage or employment subsidies for supporters" },
+          { "value": "social_security_supporters", "label": "Exemption or reductions from social security/payroll contributions for supporters" },
+          { "value": "corporate_tax", "label": "Corporate tax exemption for the WISE" },
+          { "value": "core_grant", "label": "A 'core' grant to support the organisation's mission of integration" },
+          { "value": "other", "label": "Other", "hasTextField": true }
+        ]},
+        { "id": "criteria", "label": "Criteria or conditions that must be met to access support", "type": "textarea" },
+        { "id": "legal_basis", "label": "Legal basis", "type": "text" }
+      ],
+      "condition": { "question": "Q4.17", "equals": "yes" }
+    },
+    "Q4.18.2": {
+      "id": "Q4.18.2",
+      "number": "Q4.18.2",
+      "text": "Labour policy #2 (if applicable)",
+      "type": "policy_form",
+      "fields": [
+        { "id": "name", "label": "Name of the policy", "type": "text" },
+        { "id": "types", "label": "Type of support", "type": "multi_tick", "options": [
+          { "value": "wage_subsidies_wsn", "label": "Wage or employment subsidies for WSN" },
+          { "value": "social_security_wsn", "label": "Exemption or reduction from social security/payroll contributions for WSN" },
+          { "value": "wage_subsidies_supporters", "label": "Wage or employment subsidies for supporters" },
+          { "value": "social_security_supporters", "label": "Exemption or reductions from social security/payroll contributions for supporters" },
+          { "value": "corporate_tax", "label": "Corporate tax exemption for the WISE" },
+          { "value": "core_grant", "label": "A 'core' grant to support the organisation's mission of integration" },
+          { "value": "other", "label": "Other", "hasTextField": true }
+        ]},
+        { "id": "criteria", "label": "Criteria or conditions that must be met to access support", "type": "textarea" },
+        { "id": "legal_basis", "label": "Legal basis", "type": "text" }
+      ],
+      "condition": { "question": "Q4.17", "equals": "yes" }
+    },
+    "Q4.18.3": {
+      "id": "Q4.18.3",
+      "number": "Q4.18.3",
+      "text": "Labour policy #3 (if applicable)",
+      "type": "policy_form",
+      "fields": [
+        { "id": "name", "label": "Name of the policy", "type": "text" },
+        { "id": "types", "label": "Type of support", "type": "multi_tick", "options": [
+          { "value": "wage_subsidies_wsn", "label": "Wage or employment subsidies for WSN" },
+          { "value": "social_security_wsn", "label": "Exemption or reduction from social security/payroll contributions for WSN" },
+          { "value": "wage_subsidies_supporters", "label": "Wage or employment subsidies for supporters" },
+          { "value": "social_security_supporters", "label": "Exemption or reductions from social security/payroll contributions for supporters" },
+          { "value": "corporate_tax", "label": "Corporate tax exemption for the WISE" },
+          { "value": "core_grant", "label": "A 'core' grant to support the organisation's mission of integration" },
+          { "value": "other", "label": "Other", "hasTextField": true }
+        ]},
+        { "id": "criteria", "label": "Criteria or conditions that must be met to access support", "type": "textarea" },
+        { "id": "legal_basis", "label": "Legal basis", "type": "text" }
+      ],
+      "condition": { "question": "Q4.17", "equals": "yes" }
+    },
+    "Q4.19": {
+      "id": "Q4.19",
+      "number": "Q4.19",
+      "text": "Do you benefit from any policies to support the mission linked to the type of goods or services provided (RRR, care, agrifood)?",
+      "type": "yes_no"
+    },
+    "Q4.19.1": {
+      "id": "Q4.19.1",
+      "number": "Q4.19.1",
+      "text": "Goods/services policy #1",
+      "type": "policy_form",
+      "fields": [
+        { "id": "name", "label": "Name of the policy", "type": "text" },
+        { "id": "types", "label": "Type of support", "type": "multi_tick", "options": [
+          { "value": "wage_subsidies", "label": "Wage or employment subsidies for workers" },
+          { "value": "social_security", "label": "Exemption/reduction from social security/payroll contributions for workers" },
+          { "value": "corporate_tax", "label": "Corporate tax exemption for the WISE" },
+          { "value": "core_grant", "label": "A 'core' grant to support the organisation's mission linked to the provision of goods or services" },
+          { "value": "other", "label": "Other", "hasTextField": true }
+        ]},
+        { "id": "criteria", "label": "Criteria or conditions that must be met to access support", "type": "textarea" },
+        { "id": "legal_basis", "label": "Legal basis", "type": "text" }
+      ],
+      "condition": { "question": "Q4.19", "equals": "yes" }
+    },
+    "Q4.19.2": {
+      "id": "Q4.19.2",
+      "number": "Q4.19.2",
+      "text": "Goods/services policy #2 (if applicable)",
+      "type": "policy_form",
+      "fields": [
+        { "id": "name", "label": "Name of the policy", "type": "text" },
+        { "id": "types", "label": "Type of support", "type": "multi_tick", "options": [
+          { "value": "wage_subsidies", "label": "Wage or employment subsidies for workers" },
+          { "value": "social_security", "label": "Exemption/reduction from social security/payroll contributions for workers" },
+          { "value": "corporate_tax", "label": "Corporate tax exemption for the WISE" },
+          { "value": "core_grant", "label": "A 'core' grant to support the organisation's mission linked to the provision of goods or services" },
+          { "value": "other", "label": "Other", "hasTextField": true }
+        ]},
+        { "id": "criteria", "label": "Criteria or conditions that must be met to access support", "type": "textarea" },
+        { "id": "legal_basis", "label": "Legal basis", "type": "text" }
+      ],
+      "condition": { "question": "Q4.19", "equals": "yes" }
+    },
+    "Q4.21": {
+      "id": "Q4.21",
+      "number": "Q4.21",
+      "text": "Net income (+) or Net loss (−)",
+      "hint": "Net income: total revenue minus all expenses. Net loss: amount by which total costs exceed total revenue.",
+      "type": "net_income",
+      "fields": [
+        { "id": "type", "label": "Result", "type": "single_tick", "options": [
+          { "value": "income", "label": "Net income (+)" },
+          { "value": "loss", "label": "Net loss (−)" },
+          { "value": "na", "label": "Information N/A" }
+        ]},
+        { "id": "amount", "label": "Amount", "type": "currency" }
+      ]
+    },
+    "Q4.22": {
+      "id": "Q4.22",
+      "number": "Q4.22",
+      "text": "Did the social enterprise register a net income over the last three years?",
+      "hint": "Tick one of the following categories.",
+      "type": "single_tick",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "one_year", "label": "A net income was registered only in one year" },
+        { "value": "two_years", "label": "A net income was registered in two years" },
+        { "value": "three_years", "label": "A net income was registered in the three years" }
+      ]
+    },
+    "Q4.23": {
+      "id": "Q4.23",
+      "number": "Q4.23",
+      "text": "Did the SE experience a net loss over the last 3 years?",
+      "hint": "Tick one of the following categories.",
+      "type": "single_tick",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "one_year", "label": "A net loss appeared only in one year" },
+        { "value": "two_years", "label": "A net loss appeared in two years" },
+        { "value": "three_years", "label": "A net loss appeared in the three years" }
+      ]
+    },
+    "Q4.24": {
+      "id": "Q4.24",
+      "number": "Q4.24",
+      "text": "What was the actual practice regarding distribution of the net income in your SE for the year of reference?",
+      "hint": "Tick one or more of the following categories.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "reinvestment", "label": "Reinvestment in the SE" },
+        { "value": "co_owners", "label": "Distribution to co-owners/associates of cooperatives to remunerate their shares" },
+        { "value": "rebates", "label": "Distribution to members as rebates on transactions with the cooperative" },
+        { "value": "shareholders", "label": "Distribution to shareholders" },
+        { "value": "parent_org", "label": "Distribution to a parent organisation" },
+        { "value": "not_applicable", "label": "Not applicable (no net income available/net loss)" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ]
+    },
+    "Q4.25": {
+      "id": "Q4.25",
+      "number": "Q4.25",
+      "text": "Does the SE have rules that regulate the distribution of the net income/profit?",
+      "type": "yes_no",
+      "appendixF": "Rules restricting the distribution of the net income/profit can arise from the law, the bylaws or other internal documents; in some cases, they can even be unwritten but shared as a common rule among the members."
+    },
+    "Q4.26": {
+      "id": "Q4.26",
+      "number": "Q4.26",
+      "text": "If so, specify the rule(s).",
+      "hint": "Choose all that apply.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "fully_prohibited", "label": "Distribution is fully prohibited" },
+        { "value": "equally_shared", "label": "Net income is equally shared among the SE's members" },
+        { "value": "cap_per_share", "label": "The remuneration allocated per share is subject to a cap" },
+        { "value": "rebates_allowed", "label": "The distribution to members as rebates on transactions is allowed" },
+        { "value": "only_npo_parent", "label": "Only distribution to a non-profit parent organisation is allowed" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "condition": { "question": "Q4.25", "equals": "yes" }
+    },
+    "Q4.29": {
+      "id": "Q4.29",
+      "number": "Q4.29",
+      "text": "If a shareholder or a cooperative's associate wants to leave the SE, how can his/her capital shares be reimbursed?",
+      "hint": "Please choose one.",
+      "type": "single_tick",
+      "options": [
+        { "value": "nominal_value", "label": "At the nominal value" },
+        { "value": "nominal_plus_inflation", "label": "At the nominal value + inflation adjustment" },
+        { "value": "net_assets_value", "label": "According to the value of the SE's net assets" },
+        { "value": "not_possible", "label": "Not possible" },
+        { "value": "undetermined", "label": "Undetermined" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ]
+    },
+    "Q4.30": {
+      "id": "Q4.30",
+      "number": "Q4.30",
+      "text": "If the SE decides to liquidate its activities or to exit, how are the net (residual) assets (if any) allocated?",
+      "hint": "Tick more than one if necessary.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "co_owners", "label": "Among the members as co-owners/associates of cooperatives" },
+        { "value": "shareholders", "label": "Among the shareholders" },
+        { "value": "similar_npo", "label": "To another SE or NPO with a similar social mission" },
+        { "value": "parent_org", "label": "To a parent organisation" },
+        { "value": "public_bodies", "label": "To public bodies" },
+        { "value": "community", "label": "To the community" },
+        { "value": "undetermined", "label": "Undetermined" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ]
+    },
+    "Q4.31": {
+      "id": "Q4.31",
+      "number": "Q4.31",
+      "text": "Does the SE receive non-monetary resources/in-kind contributions?",
+      "hint": "Choose all that apply.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "buildings", "label": "Buildings" },
+        { "value": "building_materials", "label": "Building materials" },
+        { "value": "equipment", "label": "Equipment/machinery/computers" },
+        { "value": "vehicles", "label": "Vehicles" },
+        { "value": "clothing_furniture_food", "label": "Clothing/furniture/food" },
+        { "value": "training", "label": "Training" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ]
+    },
+    "Q4.32": {
+      "id": "Q4.32",
+      "number": "Q4.32",
+      "text": "From whom does the SE receive these non-monetary resources?",
+      "hint": "Choose all that apply.",
+      "type": "multi_tick",
+      "options": [
+        { "value": "members", "label": "Members/associates of the SE" },
+        { "value": "businesses", "label": "Businesses" },
+        { "value": "public_entities", "label": "Public entities" },
+        { "value": "associations", "label": "Associations/Non-profit organisations/voluntary organisations" },
+        { "value": "foundations", "label": "Foundations" },
+        { "value": "cooperatives", "label": "Cooperatives" },
+        { "value": "general_public", "label": "General public" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ]
+    },
+    "Q4.33": {
+      "id": "Q4.33",
+      "number": "Q4.33",
+      "text": "Please select the statement that best describes the degree of economic sustainability of your WISE.",
+      "type": "single_tick",
+      "options": [
+        { "value": "sustainable", "label": "The WISE revenue structure has allowed the organisation to both sustain itself in the medium/long run and to invest in growth and/or innovation" },
+        { "value": "precarious", "label": "The WISE revenue structure involves a precarious economic balance for the organisation, which does not allow for significant investment in growth and/or innovation" },
+        { "value": "unsustainable", "label": "The WISE revenue structure does not allow for sustainability of our organisation in the medium/long run" }
+      ]
+    },
+    "Q4.34": {
+      "id": "Q4.34",
+      "number": "Q4.34",
+      "text": "Please select the statement that best describes the degree of social sustainability of your WISE.",
+      "type": "single_tick",
+      "options": [
+        { "value": "adequate", "label": "The WISE revenue structure allows the organisation to adequately pursue the social mission of the organisation" },
+        { "value": "inadequate_without_changes", "label": "The WISE revenue structure would not enable us to adequately pursue the social mission of the organisation without significant changes to our funding model" },
+        { "value": "inadequate", "label": "The WISE revenue structure does not enable us to adequately pursue the social mission of the organisation" }
+      ]
+    }
+  },
+  "conditionalRules": [
+    { "if": { "question": "Q1.14", "equals": "no" }, "hide": ["Q1.15"] },
+    { "if": { "question": "Q1.19", "equals": "permanent" }, "hide": ["Q1.20"] },
+    { "if": { "question": "Q2.4", "equals": "no" }, "hide": ["Q2.5"] },
+    { "if": { "question": "Q3.1", "equals": "no" }, "hide": ["Q3.2", "Q3.3"] },
+    { "if": { "question": "Q3.4", "equals": "no_shares" }, "hide": ["Q3.8_s", "Q3.9_s", "Q3.10_s", "Q3.11_s"] },
+    { "if": { "question": "Q3.4", "equals": "shares" }, "hide": ["Q3.8_ns", "Q3.9_ns", "Q3.10_ns", "Q3.11_ns", "Q3.12_ns"] },
+    { "if": { "question": "Q4.17", "equals": "no" }, "hide": ["Q4.18.1", "Q4.18.2", "Q4.18.3"] },
+    { "if": { "question": "Q4.19", "equals": "no" }, "hide": ["Q4.19.1", "Q4.19.2"] },
+    { "if": { "question": "Q4.25", "equals": "no" }, "hide": ["Q4.26"] }
+  ]
+}
