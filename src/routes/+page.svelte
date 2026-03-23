@@ -160,47 +160,47 @@
 
 <!-- WELCOME PAGE -->
 {#if page === 'welcome'}
-<div class="min-h-screen bg-[var(--color-background)] flex items-center justify-center p-6">
+<div class="min-h-screen bg-[var(--color-background)] flex items-center justify-center p-4 sm:p-6">
   <div class="max-w-2xl w-full">
     <!-- Header -->
-    <div class="text-center mb-12">
-      <div class="inline-flex items-center gap-2 bg-[var(--color-primary-light)] text-[var(--color-primary)] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+    <div class="text-center mb-8 sm:mb-12">
+      <div class="inline-flex items-center gap-2 bg-[var(--color-primary-light)] text-[var(--color-primary)] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
         WISESHIFT · Horizon Europe
       </div>
-      <h1 class="text-4xl font-bold text-[var(--color-text)] mb-4 leading-tight">
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text)] mb-3 sm:mb-4 leading-tight">
         Organisational Overview<br>Questionnaire
       </h1>
-      <p class="text-lg text-[var(--color-text-secondary)] max-w-lg mx-auto">
+      <p class="text-base sm:text-lg text-[var(--color-text-secondary)] max-w-lg mx-auto px-2">
         This questionnaire takes approximately <strong>90 minutes</strong> to complete.
         Your progress saves automatically — you can leave and come back at any time.
       </p>
     </div>
 
     <!-- Action Cards -->
-    <div class="space-y-4">
+    <div class="space-y-3 sm:space-y-4">
       <button onclick={handleStart}
-        class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-border)] rounded-xl p-6 text-left hover:border-[var(--color-primary)] hover:shadow-md transition-all cursor-pointer group">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-[var(--color-primary-light)] rounded-xl flex items-center justify-center text-2xl group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors">
+        class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-border)] rounded-xl p-4 sm:p-6 text-left hover:border-[var(--color-primary)] hover:shadow-md transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 sm:gap-4">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-primary-light)] rounded-xl flex items-center justify-center text-xl sm:text-2xl group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors flex-shrink-0">
             ✦
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-[var(--color-text)]">Start New Questionnaire</h3>
-            <p class="text-[var(--color-text-secondary)] text-sm">Begin a fresh questionnaire for a new organisation</p>
+          <div class="min-w-0">
+            <h3 class="text-base sm:text-lg font-semibold text-[var(--color-text)]">Start New Questionnaire</h3>
+            <p class="text-[var(--color-text-secondary)] text-xs sm:text-sm">Begin a fresh questionnaire for a new organisation</p>
           </div>
         </div>
       </button>
 
       {#if hasSavedAnswers}
       <button onclick={handleContinue}
-        class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-accent)] rounded-xl p-6 text-left hover:shadow-md transition-all cursor-pointer group">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-[var(--color-accent-light)] rounded-xl flex items-center justify-center text-2xl">
+        class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-accent)] rounded-xl p-4 sm:p-6 text-left hover:shadow-md transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 sm:gap-4">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-accent-light)] rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0">
             ▶
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-[var(--color-text)]">Continue Saved Progress</h3>
-            <p class="text-[var(--color-text-secondary)] text-sm">
+          <div class="min-w-0">
+            <h3 class="text-base sm:text-lg font-semibold text-[var(--color-text)]">Continue Saved Progress</h3>
+            <p class="text-[var(--color-text-secondary)] text-xs sm:text-sm">
               {prog.overall.percent}% complete · {prog.overall.answered} of {prog.overall.total} questions answered
             </p>
           </div>
@@ -209,14 +209,14 @@
       {/if}
 
       <label
-        class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-border)] rounded-xl p-6 text-left hover:border-[var(--color-primary)] hover:shadow-md transition-all cursor-pointer group block">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-[var(--color-primary-light)] rounded-xl flex items-center justify-center text-2xl">
+        class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-border)] rounded-xl p-4 sm:p-6 text-left hover:border-[var(--color-primary)] hover:shadow-md transition-all cursor-pointer group block">
+        <div class="flex items-center gap-3 sm:gap-4">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-primary-light)] rounded-xl flex items-center justify-center text-xl sm:text-2xl flex-shrink-0">
             ↑
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-[var(--color-text)]">Load Saved File</h3>
-            <p class="text-[var(--color-text-secondary)] text-sm">Upload a previously saved .json questionnaire file</p>
+          <div class="min-w-0">
+            <h3 class="text-base sm:text-lg font-semibold text-[var(--color-text)]">Load Saved File</h3>
+            <p class="text-[var(--color-text-secondary)] text-xs sm:text-sm">Upload a previously saved .json questionnaire file</p>
           </div>
         </div>
         <input type="file" accept=".json" onchange={handleImport} class="hidden" />
@@ -224,8 +224,8 @@
     </div>
 
     <!-- Footer -->
-    <p class="text-center text-xs text-[var(--color-text-secondary)] mt-12 leading-relaxed">
-      Grant Agreement No. 101178477. Views and opinions expressed are those of the author(s) only<br>
+    <p class="text-center text-[10px] sm:text-xs text-[var(--color-text-secondary)] mt-8 sm:mt-12 leading-relaxed px-2">
+      Grant Agreement No. 101178477. Views and opinions expressed are those of the author(s) only
       and do not necessarily reflect those of the European Union or the European Research Executive Agency (REA).
     </p>
   </div>
@@ -333,39 +333,39 @@
 
     <!-- Content Area -->
     <div class="flex-1 overflow-y-auto">
-      <div class="max-w-[720px] mx-auto px-6 py-10">
+      <div class="max-w-[720px] mx-auto px-3 sm:px-6 py-6 sm:py-10">
         <!-- Section & Group Header -->
-        <div class="mb-8">
-          <div class="text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wide mb-1">
+        <div class="mb-6 sm:mb-8">
+          <div class="text-xs sm:text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wide mb-1">
             Section {section.number} · {group?.title}
           </div>
-          <h2 class="text-2xl font-bold text-[var(--color-text)]">{section.title}</h2>
+          <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-text)]">{section.title}</h2>
           {#if groupIdx === 0}
-          <p class="text-[var(--color-text-secondary)] mt-2">{section.intro}</p>
+          <p class="text-sm sm:text-base text-[var(--color-text-secondary)] mt-2">{section.intro}</p>
           {/if}
         </div>
 
         <!-- Questions -->
-        <div class="space-y-8">
+        <div class="space-y-5 sm:space-y-8">
           {#each groupQuestions as q (q.id)}
-          <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-6 shadow-sm">
+          <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-4 sm:p-6 shadow-sm">
             <!-- Question Label -->
-            <div class="flex items-start gap-3 mb-4">
-              <span class="text-xs font-mono bg-[var(--color-primary-light)] text-[var(--color-primary)] px-2 py-1 rounded flex-shrink-0 mt-0.5">
+            <div class="flex items-start gap-2 sm:gap-3 mb-3 sm:mb-4">
+              <span class="text-[10px] sm:text-xs font-mono bg-[var(--color-primary-light)] text-[var(--color-primary)] px-1.5 sm:px-2 py-0.5 sm:py-1 rounded flex-shrink-0 mt-0.5">
                 {q.number}
               </span>
-              <div class="flex-1">
-                <label class="text-[var(--color-text)] font-medium leading-relaxed block">
+              <div class="flex-1 min-w-0">
+                <label class="text-sm sm:text-base text-[var(--color-text)] font-medium leading-relaxed block">
                   {q.text}
                 </label>
                 {#if q.hint}
-                <p class="text-sm text-[var(--color-text-secondary)] mt-1">{q.hint}</p>
+                <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] mt-1">{q.hint}</p>
                 {/if}
               </div>
               {#if q.appendixF}
               <button
                 onclick={() => showTooltip = showTooltip === q.id ? null : q.id}
-                class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--color-accent-light)] text-[var(--color-accent)] text-xs font-bold flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-colors cursor-help"
+                class="flex-shrink-0 w-7 h-7 sm:w-6 sm:h-6 rounded-full bg-[var(--color-accent-light)] text-[var(--color-accent)] text-xs font-bold flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-colors cursor-help"
               >?</button>
               {/if}
             </div>
@@ -529,7 +529,8 @@
             </div>
 
             {:else if q.type === 'likert_matrix'}
-            <div class="overflow-x-auto">
+            <!-- Desktop: table layout -->
+            <div class="hidden sm:block overflow-x-auto">
               <table class="w-full">
                 <thead>
                   <tr>
@@ -560,6 +561,29 @@
                   {/each}
                 </tbody>
               </table>
+            </div>
+            <!-- Mobile: card layout per statement -->
+            <div class="sm:hidden space-y-4">
+              {#each q.statements as stmt}
+              <div class="bg-[var(--color-background)] rounded-lg p-3">
+                <p class="text-sm text-[var(--color-text)] mb-2">{stmt.text}</p>
+                <div class="flex gap-1">
+                  {#each q.scale as s}
+                  <button
+                    onclick={() => handleAnswer(q.id + '_' + stmt.id, s.value)}
+                    class="flex-1 py-2 rounded-lg border text-xs font-medium transition-all
+                      {allAnswers[q.id + '_' + stmt.id]?.value === s.value
+                        ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-white'
+                        : 'border-[var(--color-border)] text-[var(--color-text-secondary)]'}"
+                  >{s.value}</button>
+                  {/each}
+                </div>
+                <div class="flex justify-between text-[10px] text-[var(--color-text-secondary)] mt-1 px-1">
+                  <span>{q.scale[0].label}</span>
+                  <span>{q.scale[q.scale.length - 1].label}</span>
+                </div>
+              </div>
+              {/each}
             </div>
 
             {:else if q.type === 'ranking_multi'}
@@ -996,30 +1020,30 @@
         </div>
 
         <!-- Navigation buttons -->
-        <div class="flex items-center justify-between mt-10 pb-10">
+        <div class="flex items-center justify-between mt-8 sm:mt-10 pb-8 sm:pb-10 gap-2">
           <button
             onclick={prevGroup}
             disabled={isFirstGroup}
-            class="px-6 h-12 rounded-xl border-2 border-[var(--color-border)] text-[var(--color-text-secondary)] font-medium hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            class="px-3 sm:px-6 h-11 sm:h-12 rounded-xl border-2 border-[var(--color-border)] text-[var(--color-text-secondary)] font-medium text-sm sm:text-base hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            ← Previous
+            ← <span class="hidden sm:inline">Previous</span>
           </button>
 
-          <span class="text-sm text-[var(--color-text-secondary)]">
-            {prog.overall.percent}% complete
+          <span class="text-xs sm:text-sm text-[var(--color-text-secondary)] text-center">
+            {prog.overall.percent}%
           </span>
 
           {#if isLastGroup}
           <button
             onclick={() => currentPage.set('review')}
-            class="px-6 h-12 rounded-xl bg-[var(--color-accent)] text-white font-semibold hover:bg-[var(--color-accent)]/90 transition-all shadow-sm"
+            class="px-3 sm:px-6 h-11 sm:h-12 rounded-xl bg-[var(--color-accent)] text-white font-semibold text-sm sm:text-base hover:bg-[var(--color-accent)]/90 transition-all shadow-sm"
           >
-            Review Answers →
+            Review<span class="hidden sm:inline"> Answers</span> →
           </button>
           {:else}
           <button
             onclick={handleNextGroup}
-            class="px-6 h-12 rounded-xl bg-[var(--color-primary)] text-white font-semibold hover:bg-[var(--color-primary-dark)] transition-all shadow-sm"
+            class="px-4 sm:px-6 h-11 sm:h-12 rounded-xl bg-[var(--color-primary)] text-white font-semibold text-sm sm:text-base hover:bg-[var(--color-primary-dark)] transition-all shadow-sm"
           >
             Next →
           </button>
@@ -1033,41 +1057,41 @@
 <!-- REVIEW PAGE -->
 {:else if page === 'review'}
 <div class="min-h-screen bg-[var(--color-background)]">
-  <header class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-6 py-4 flex items-center justify-between">
-    <button onclick={() => currentPage.set('questionnaire')} class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">
-      ← Back to questionnaire
+  <header class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-2">
+    <button onclick={() => currentPage.set('questionnaire')} class="text-xs sm:text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] flex-shrink-0">
+      ← <span class="hidden sm:inline">Back to questionnaire</span><span class="sm:hidden">Back</span>
     </button>
-    <h1 class="text-lg font-semibold text-[var(--color-text)]">Review All Answers</h1>
-    <div class="flex gap-2">
+    <h1 class="text-sm sm:text-lg font-semibold text-[var(--color-text)] truncate">Review</h1>
+    <div class="flex gap-1.5 sm:gap-2 flex-shrink-0">
       <button onclick={handleExportJSON}
-        class="px-4 h-10 rounded-lg bg-[var(--color-primary)] text-white text-sm font-medium hover:bg-[var(--color-primary-dark)] transition-colors">
+        class="px-2.5 sm:px-4 h-9 sm:h-10 rounded-lg bg-[var(--color-primary)] text-white text-xs sm:text-sm font-medium hover:bg-[var(--color-primary-dark)] transition-colors">
         JSON
       </button>
       <button onclick={handleExportCSV}
-        class="px-4 h-10 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:opacity-90 transition-colors">
+        class="px-2.5 sm:px-4 h-9 sm:h-10 rounded-lg bg-[var(--color-accent)] text-white text-xs sm:text-sm font-medium hover:opacity-90 transition-colors">
         CSV
       </button>
     </div>
   </header>
 
-  <div class="max-w-[720px] mx-auto px-6 py-10">
+  <div class="max-w-[720px] mx-auto px-3 sm:px-6 py-6 sm:py-10">
     <!-- Overall stats -->
-    <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-6 mb-8">
-      <h2 class="text-xl font-bold mb-4">Completion Summary</h2>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-4 sm:p-6 mb-6 sm:mb-8">
+      <h2 class="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Completion Summary</h2>
+      <div class="grid grid-cols-4 gap-2 sm:gap-4">
         {#each sections as sec}
         <div class="text-center">
-          <div class="text-2xl font-bold {prog.sections[sec.id]?.percent === 100 ? 'text-[var(--color-success)]' : 'text-[var(--color-primary)]'}">
+          <div class="text-lg sm:text-2xl font-bold {prog.sections[sec.id]?.percent === 100 ? 'text-[var(--color-success)]' : 'text-[var(--color-primary)]'}">
             {prog.sections[sec.id]?.percent || 0}%
           </div>
-          <div class="text-xs text-[var(--color-text-secondary)] mt-1">Section {sec.number}</div>
+          <div class="text-[10px] sm:text-xs text-[var(--color-text-secondary)] mt-0.5 sm:mt-1">Sec. {sec.number}</div>
         </div>
         {/each}
       </div>
-      <div class="mt-4 h-2 bg-[var(--color-border-light)] rounded-full overflow-hidden">
+      <div class="mt-3 sm:mt-4 h-2 bg-[var(--color-border-light)] rounded-full overflow-hidden">
         <div class="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] rounded-full transition-all" style="width: {prog.overall.percent}%"></div>
       </div>
-      <p class="text-center text-sm text-[var(--color-text-secondary)] mt-2">{prog.overall.answered} of {prog.overall.total} questions answered ({prog.overall.percent}%)</p>
+      <p class="text-center text-xs sm:text-sm text-[var(--color-text-secondary)] mt-2">{prog.overall.answered} of {prog.overall.total} answered ({prog.overall.percent}%)</p>
     </div>
 
     <!-- All questions by section -->
@@ -1081,10 +1105,12 @@
         {#if visible.has(qid)}
         {@const q = (questionnaire.questions as any)[qid]}
         {#if q}
-        <div class="flex items-start gap-3 py-2 border-b border-[var(--color-border-light)]">
-          <span class="text-xs font-mono text-[var(--color-text-secondary)] w-12 flex-shrink-0">{q.number}</span>
-          <span class="flex-1 text-sm text-[var(--color-text)]">{q.text}</span>
-          <span class="text-sm text-right flex-shrink-0 max-w-48 truncate
+        <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-3 py-2 border-b border-[var(--color-border-light)]">
+          <div class="flex items-start gap-2 sm:gap-3 flex-1 min-w-0">
+            <span class="text-[10px] sm:text-xs font-mono text-[var(--color-text-secondary)] w-10 sm:w-12 flex-shrink-0">{q.number}</span>
+            <span class="flex-1 text-xs sm:text-sm text-[var(--color-text)]">{q.text}</span>
+          </div>
+          <span class="text-xs sm:text-sm sm:text-right flex-shrink-0 sm:max-w-48 truncate pl-12 sm:pl-0
             {allAnswers[qid]?.value ? 'text-[var(--color-success)] font-medium' : 'text-[var(--color-error)]'}">
             {#if allAnswers[qid]?.value}
               {#if typeof allAnswers[qid].value === 'object'}
@@ -1106,17 +1132,17 @@
     {/each}
 
     <!-- Export buttons -->
-    <div class="flex flex-wrap gap-4 justify-center mt-10 pb-10">
+    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mt-8 sm:mt-10 pb-8 sm:pb-10">
       <button onclick={handleExportJSON}
-        class="px-6 h-12 rounded-xl bg-[var(--color-primary)] text-white font-semibold hover:bg-[var(--color-primary-dark)] transition-all shadow-sm">
+        class="px-6 h-12 rounded-xl bg-[var(--color-primary)] text-white font-semibold text-sm sm:text-base hover:bg-[var(--color-primary-dark)] transition-all shadow-sm w-full sm:w-auto">
         Download JSON
       </button>
       <button onclick={handleExportCSV}
-        class="px-6 h-12 rounded-xl bg-[var(--color-accent)] text-white font-semibold hover:opacity-90 transition-all shadow-sm">
+        class="px-6 h-12 rounded-xl bg-[var(--color-accent)] text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-all shadow-sm w-full sm:w-auto">
         Download CSV
       </button>
       <button onclick={() => currentPage.set('questionnaire')}
-        class="px-6 h-12 rounded-xl border-2 border-[var(--color-border)] text-[var(--color-text-secondary)] font-medium hover:border-[var(--color-primary)] transition-all">
+        class="px-6 h-12 rounded-xl border-2 border-[var(--color-border)] text-[var(--color-text-secondary)] font-medium text-sm sm:text-base hover:border-[var(--color-primary)] transition-all w-full sm:w-auto">
         Back to editing
       </button>
     </div>
