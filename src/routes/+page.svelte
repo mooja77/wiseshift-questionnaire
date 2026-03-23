@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { currentPage, currentSectionIndex, currentGroupIndex, sections, startQuestionnaire, nextGroup, prevGroup, goToSection } from '$lib/stores/navigation';
+  import { currentPage, currentSectionIndex, currentGroupIndex, sections, startQuestionnaire, nextGroup, prevGroup, goToSection, goToDashboard, startInterview, currentInstrumentId, currentInterviewCloudId, currentWiseName, currentCountry } from '$lib/stores/navigation';
+  import interviewData from '$lib/data/interviews.json';
   import { answers, visibleQuestions, lastSaved, cloudStatus, cloudId } from '$lib/stores/answers';
   import { cloudList, cloudLoad } from '$lib/supabase';
   import { downloadPDF } from '$lib/utils/pdfExport';
@@ -38,11 +39,40 @@
       answers.loadAnswers(result.data.answers as any);
       cloudId.set(id);
       localStorage.setItem('wiseshift_cloud_id', id);
-      startQuestionnaire();
+      goToDashboard();
     } else {
       alert('Failed to load from cloud: ' + result.error);
     }
   }
+
+  // Interview state
+  let instrId = $derived($currentInstrumentId);
+  let currentInstrument = $derived(interviewData.instruments.find((i: any) => i.id === instrId));
+  let interviewAnswers = $state<Record<string, string>>({});
+  let intervieweeName = $state('');
+  let intervieweeRole = $state('');
+
+  // Interview answer handler
+  function handleInterviewAnswer(questionId: string, value: string) {
+    interviewAnswers = { ...interviewAnswers, [questionId]: value };
+    // Auto-save interview to cloud (debounced via answers store pattern)
+    // For now save locally
+    if (typeof window !== 'undefined' && instrId) {
+      const key = `wiseshift_interview_${instrId}_draft`;
+      localStorage.setItem(key, JSON.stringify({ intervieweeName, intervieweeRole, answers: interviewAnswers }));
+    }
+  }
+
+  // Group cloud questionnaires by wise_name for dashboard
+  let caseStudies = $derived(() => {
+    const grouped: Record<string, any[]> = {};
+    for (const cq of cloudQuestionnaires) {
+      const name = cq.wise_name || 'Untitled';
+      if (!grouped[name]) grouped[name] = [];
+      grouped[name].push(cq);
+    }
+    return grouped;
+  });
 
   // Load cloud list on mount — use $effect for reliable SSR-safe loading
   $effect(() => {
@@ -62,11 +92,12 @@
   }
 
   function handleStart() {
-    startQuestionnaire();
+    answers.clear();
+    goToDashboard();
   }
 
   function handleContinue() {
-    startQuestionnaire();
+    goToDashboard();
   }
 
   function handleClear() {
@@ -160,7 +191,7 @@
           if (prefilled > 0) {
             alert(`Loaded pre-filled data for "${wiseName}".\n\n${prefilled} answers pre-filled from desk research.\nPlease review and confirm each answer during the interview.`);
           }
-          startQuestionnaire();
+          goToDashboard();
         }
       } catch (err) {
         alert('Could not read this file. Please make sure it is a valid WISESHIFT questionnaire file.');
@@ -1363,4 +1394,167 @@
     </div>
   </div>
 </div>
+
+<!-- DASHBOARD PAGE -->
+{:else if page === 'dashboard'}
+<div class="min-h-screen bg-[var(--color-background)]">
+  <header class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 sm:px-6 py-4">
+    <div class="max-w-[960px] mx-auto flex items-center justify-between">
+      <button onclick={() => currentPage.set('welcome')} class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">← All Case Studies</button>
+      <h1 class="text-base sm:text-lg font-semibold text-[var(--color-text)] truncate">{allAnswers['Q1.1']?.value || 'Case Study'}</h1>
+      <span class="text-xs text-[var(--color-text-secondary)]">{allAnswers['Q4.1']?.value || ''}</span>
+    </div>
+  </header>
+
+  <div class="max-w-[960px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
+    <!-- Organisational Profile -->
+    <div class="mb-8">
+      <h2 class="text-lg sm:text-xl font-bold text-[var(--color-text)] mb-4 flex items-center gap-2">
+        <span class="text-2xl">📊</span> Organisational Profile
+      </h2>
+      <button onclick={startQuestionnaire}
+        class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-border)] rounded-xl p-4 sm:p-5 text-left hover:border-[var(--color-primary)] hover:shadow-md transition-all group">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-[var(--color-primary-light)] rounded-xl flex items-center justify-center text-xl flex-shrink-0 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors">📋</div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-[var(--color-text)]">Organisational Overview Questionnaire</h3>
+            <p class="text-xs sm:text-sm text-[var(--color-text-secondary)]">Appendix E — 70+ structured questions · ~90 min</p>
+          </div>
+          <span class="text-sm font-mono {prog.overall.percent > 0 ? 'text-[var(--color-primary)]' : 'text-[var(--color-text-secondary)]'}">{prog.overall.percent}%</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Internal Stakeholders -->
+    <div class="mb-8">
+      <h2 class="text-lg sm:text-xl font-bold text-[var(--color-text)] mb-4 flex items-center gap-2">
+        <span class="text-2xl">👥</span> Internal Stakeholder Interviews
+      </h2>
+      <div class="grid gap-3">
+        {#each interviewData.instruments.filter((i: any) => i.category === 'internal') as inst}
+        <button onclick={() => startInterview(inst.id)}
+          class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-3 sm:p-4 text-left hover:border-[var(--color-primary)] hover:shadow-sm transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="text-xl sm:text-2xl flex-shrink-0">{inst.icon}</span>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm sm:text-base font-medium text-[var(--color-text)]">Section {inst.section}: {inst.title}</h3>
+              <p class="text-xs text-[var(--color-text-secondary)]">{inst.themes.reduce((sum: number, t: any) => sum + t.questions.length, 0)} questions · {inst.estimatedTime}</p>
+            </div>
+            <span class="text-xs text-[var(--color-primary)] font-medium flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">Start →</span>
+          </div>
+        </button>
+        {/each}
+      </div>
+    </div>
+
+    <!-- External Stakeholders -->
+    <div class="mb-8">
+      <h2 class="text-lg sm:text-xl font-bold text-[var(--color-text)] mb-4 flex items-center gap-2">
+        <span class="text-2xl">🌐</span> External Stakeholder Interviews
+      </h2>
+      <div class="grid gap-3">
+        {#each interviewData.instruments.filter((i: any) => i.category === 'external') as inst}
+        <button onclick={() => startInterview(inst.id)}
+          class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-3 sm:p-4 text-left hover:border-[var(--color-primary)] hover:shadow-sm transition-all group">
+          <div class="flex items-center gap-3">
+            <span class="text-xl sm:text-2xl flex-shrink-0">{inst.icon}</span>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-sm sm:text-base font-medium text-[var(--color-text)]">Section {inst.section}: {inst.title}</h3>
+              <p class="text-xs text-[var(--color-text-secondary)]">{inst.themes.reduce((sum: number, t: any) => sum + t.questions.length, 0)} questions · {inst.estimatedTime}</p>
+            </div>
+            <span class="text-xs text-[var(--color-primary)] font-medium flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">Start →</span>
+          </div>
+        </button>
+        {/each}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERVIEW PAGE -->
+{:else if page === 'interview' && currentInstrument}
+<div class="min-h-screen bg-[var(--color-background)]">
+  <!-- Header -->
+  <div class="h-1 bg-[var(--color-border-light)]">
+    {#each [Object.keys(interviewAnswers).filter(k => interviewAnswers[k]).length] as answered}
+    {#each [currentInstrument.themes.reduce((s: number, t: any) => s + t.questions.length, 0)] as total}
+    <div class="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] transition-all duration-500" style="width: {total > 0 ? Math.round(answered / total * 100) : 0}%"></div>
+    {/each}
+    {/each}
+  </div>
+  <header class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 sm:px-6 py-3 flex items-center justify-between gap-2">
+    <button onclick={goToDashboard} class="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">← Dashboard</button>
+    <span class="text-xs sm:text-sm font-medium text-[var(--color-text)] truncate">Section {currentInstrument.section}: {currentInstrument.shortTitle}</span>
+    <span class="text-xs text-[var(--color-success)]">Auto-saved</span>
+  </header>
+
+  <div class="max-w-[720px] mx-auto px-3 sm:px-6 py-6 sm:py-10">
+    <!-- Instrument header -->
+    <div class="mb-6 sm:mb-8">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">{currentInstrument.icon}</span>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-text)]">{currentInstrument.title}</h2>
+          <p class="text-xs sm:text-sm text-[var(--color-text-secondary)]">Section {currentInstrument.section} · {currentInstrument.estimatedTime}</p>
+        </div>
+      </div>
+      <p class="text-sm text-[var(--color-text-secondary)] mt-2">{currentInstrument.description}</p>
+    </div>
+
+    <!-- Interviewee info -->
+    <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-4 sm:p-5 mb-6 sm:mb-8">
+      <h3 class="text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wide mb-3">Interviewee</h3>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs text-[var(--color-text-secondary)] block mb-1">Name (optional)</label>
+          <input type="text" bind:value={intervieweeName} placeholder="e.g. Martin Ward"
+            class="w-full h-10 px-3 border border-[var(--color-border)] rounded-lg text-sm" />
+        </div>
+        <div>
+          <label class="text-xs text-[var(--color-text-secondary)] block mb-1">Role</label>
+          <input type="text" bind:value={intervieweeRole} placeholder="e.g. Manager, Board Member"
+            class="w-full h-10 px-3 border border-[var(--color-border)] rounded-lg text-sm" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Questions by theme -->
+    {#each currentInstrument.themes as theme}
+    <div class="mb-8 sm:mb-10">
+      <h3 class="text-base sm:text-lg font-bold text-[var(--color-text)] mb-4 pb-2 border-b border-[var(--color-border)]">{theme.title}</h3>
+      <div class="space-y-5 sm:space-y-6">
+        {#each theme.questions as q}
+        <div class="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-4 sm:p-5 shadow-sm">
+          <div class="flex items-start gap-2 sm:gap-3 mb-3">
+            <span class="text-[10px] sm:text-xs font-mono bg-[var(--color-primary-light)] text-[var(--color-primary)] px-1.5 sm:px-2 py-0.5 sm:py-1 rounded flex-shrink-0 mt-0.5">{q.id}</span>
+            <div class="flex-1">
+              <p class="text-sm sm:text-base text-[var(--color-text)] font-medium leading-relaxed">{q.text}</p>
+              {#if q.hint}
+              <p class="text-xs text-[var(--color-accent)] mt-1 italic">{q.hint}</p>
+              {/if}
+            </div>
+          </div>
+          <textarea
+            value={interviewAnswers[q.id] || ''}
+            oninput={(e) => handleInterviewAnswer(q.id, (e.target as HTMLTextAreaElement).value)}
+            rows="4"
+            placeholder="Record the interviewee's response here..."
+            class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-[var(--color-border)] rounded-lg text-sm text-[var(--color-text)] bg-[var(--color-surface)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none resize-y"
+          ></textarea>
+        </div>
+        {/each}
+      </div>
+    </div>
+    {/each}
+
+    <!-- Bottom actions -->
+    <div class="flex flex-col sm:flex-row gap-3 justify-center mt-8 pb-8">
+      <button onclick={goToDashboard}
+        class="px-6 h-12 rounded-xl bg-[var(--color-primary)] text-white font-semibold text-sm sm:text-base hover:bg-[var(--color-primary-dark)] transition-all shadow-sm w-full sm:w-auto">
+        Back to Dashboard
+      </button>
+    </div>
+  </div>
+</div>
+
 {/if}

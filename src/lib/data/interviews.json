@@ -1,0 +1,497 @@
+{
+  "instruments": [
+    {
+      "id": "int_a_wsn",
+      "title": "Workers with Support Needs",
+      "shortTitle": "WSN Workers",
+      "section": "A",
+      "category": "internal",
+      "categoryLabel": "Internal Stakeholders",
+      "icon": "👤",
+      "description": "Interview guide for workers with support needs (beneficiaries) — the people the WISE is designed to help integrate into employment.",
+      "estimatedTime": "30-45 minutes",
+      "themes": [
+        {
+          "id": "background", "title": "Background",
+          "questions": [
+            { "id": "Q1a", "text": "What is your role here, and how did you come to be involved with this organisation? When did you join? How did you first hear about it? Who helped you to join?", "hint": "Informs analysis of: niche creation, recruitment pathways" },
+            { "id": "Q1b", "text": "How long are you able to work in this organisation? How do you feel about the time limits, if any, on your stay?", "hint": "Informs analysis of: integration model (transitional vs permanent)" },
+            { "id": "Q2", "text": "Did you work in another job before working for this WISE? In the public, private for-profit or nonprofit sector? How does working here compare to your previous work experience(s)?", "hint": "Informs analysis of: trajectory, labour market context" }
+          ]
+        },
+        {
+          "id": "training_skills", "title": "Training and Skills",
+          "questions": [
+            { "id": "Q3", "text": "What does a typical working day look like for you? Describe your day-to-day activities. Are you happy with your work conditions?", "hint": "Informs analysis of: working conditions, job quality" },
+            { "id": "Q4", "text": "What do you enjoy most about your work here? Do you feel respected and valued here as a worker? Why or why not?", "hint": "Informs analysis of: worker wellbeing, empowerment" },
+            { "id": "Q5", "text": "Is there anything you find particularly difficult/challenging in your work? Is there anything you would change about your work here?", "hint": "Informs analysis of: challenges, areas for improvement" },
+            { "id": "Q6", "text": "Have you learned new skills since joining? If so, what are those skills?", "hint": "Informs analysis of: skills development, training effectiveness" }
+          ]
+        },
+        {
+          "id": "governance", "title": "Management and Governance",
+          "questions": [
+            { "id": "Q7", "text": "Do you know how decisions are taken in the organisation? Are you asked your opinions about how things work in the WISE? Are you invited to help make decisions?", "hint": "Informs analysis of: participation, democratic governance" },
+            { "id": "Q8", "text": "How has being part of this WISE affected your life outside of work? What has changed in your life (e.g. income, independence, self-confidence, relationships, housing, health)?", "hint": "Informs analysis of: social outcomes, broader impact" }
+          ]
+        },
+        {
+          "id": "landscape", "title": "Landscape Dynamics",
+          "questions": [
+            { "id": "Q9", "text": "Have broader events or changes (e.g. COVID-19, cost of living, local economic changes, climate change) affected your work or experience here? How has the organisation responded?", "hint": "Informs analysis of: landscape pressures, resilience" },
+            { "id": "Q10", "text": "[If working in the WISE for some time] Did you notice any evolution in the organisation since your work here, in good or in bad?", "hint": "Informs analysis of: organisational change over time" }
+          ]
+        },
+        {
+          "id": "mission", "title": "Mission and Future",
+          "questions": [
+            { "id": "Q11", "text": "Would you like to keep working in the organisation in the future? Do you plan on working for another organisation? If so, what kind of organisation?", "hint": "Informs analysis of: aspirations, progression pathways" },
+            { "id": "Q12", "text": "Do you feel like this organisation cares about the environment? Is it important for you or not?", "hint": "Informs analysis of: environmental awareness, mission alignment" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_b_supporters",
+      "title": "Workers that are Supporters",
+      "shortTitle": "Supporters",
+      "section": "B",
+      "category": "internal",
+      "categoryLabel": "Internal Stakeholders",
+      "icon": "🤝",
+      "description": "Interview guide for staff who support and supervise workers with support needs (tutors, job coaches, mentors).",
+      "estimatedTime": "45-60 minutes",
+      "themes": [
+        {
+          "id": "work_supporter", "title": "The Work of the Supporter",
+          "questions": [
+            { "id": "Q1", "text": "What is your role here, and how did you come to be involved with this organisation? How long have you been working in this organisation?", "hint": "Informs analysis of: supporter background, recruitment" },
+            { "id": "Q2", "text": "To what extent is it important for you to work in a work integration social enterprise? In what ways did this inform your decision to accept this role?", "hint": "Informs analysis of: motivation, mission alignment" },
+            { "id": "Q3", "text": "What does your day-to-day work activities look like? Can you briefly describe your tasks? What kinds of support do you provide to Workers with Support Needs?", "hint": "Informs analysis of: support practices, work content" },
+            { "id": "Q4", "text": "What do you find most meaningful — and/or most challenging — about working in this WISE? Can you elaborate on this a bit?", "hint": "Informs analysis of: job satisfaction, challenges" }
+          ]
+        },
+        {
+          "id": "wsn_profiles", "title": "WSN Profiles, Training and Skills",
+          "questions": [
+            { "id": "Q5", "text": "How would you describe the level and intensity of support that WSNs receive? How many WSNs do you supervise, and what is the percentage of your time dedicated to supervisory/support tasks?", "hint": "Informs analysis of: support intensity, ratios" },
+            { "id": "Q6", "text": "What are the social backgrounds of your WSNs – what are the main systemic barriers that they face? Did you see those 'WSN profiles' evolve through time?", "hint": "Informs analysis of: target group characteristics, evolution" },
+            { "id": "Q7", "text": "What kind of skills do you feel that the WISE is helping to develop among WSNs (hard vs soft skills, technical vs social skills)? Did that evolve through time?", "hint": "Informs analysis of: skills development, outcomes" },
+            { "id": "Q8", "text": "How do you see the skills and empowerment of the WSNs developing as they work for this WISE? Are you or someone else in charge of assessing the progress of individual WSNs?", "hint": "Informs analysis of: progress tracking, empowerment" },
+            { "id": "Q9", "text": "Does the WISE provide for any training for its workers, both supporters and WSNs? Is the training ongoing? What are some of the drawbacks or challenges?", "hint": "Informs analysis of: training provision, challenges" },
+            { "id": "Q10", "text": "In your opinion, what enables or limits workers' transition to the conventional labour market? How long can 'workers with special needs' work in this WISE?", "hint": "Informs analysis of: transition barriers, integration model" }
+          ]
+        },
+        {
+          "id": "mission_evolution", "title": "WISE Mission and Evolution",
+          "questions": [
+            { "id": "Q11", "text": "How would you describe the mission of the organisation? How did this mission evolve? To what extent are environmental concerns part of this WISE's mission?", "hint": "Informs analysis of: mission, environmental dimension" },
+            { "id": "Q12", "text": "How do you see your role evolving over the next 5-10 years, considering possible changes in the work environment and the needs of WSNs?", "hint": "Informs analysis of: future outlook, adaptability" },
+            { "id": "Q13", "text": "Have you seen some changes in the WISE since you started working here – can you tell me about them please? Have the developments been positive?", "hint": "Informs analysis of: organisational change" }
+          ]
+        },
+        {
+          "id": "governance", "title": "Governance",
+          "questions": [
+            { "id": "Q14", "text": "Can you tell me about the governance structure of the organisation? Are you involved in key decision-making of this WISE? Please provide some examples.", "hint": "Informs analysis of: governance, participation" },
+            { "id": "Q15", "text": "Are WSNs involved in key decision-making of this WISE? Please provide some examples. Do you feel that they are sufficiently involved?", "hint": "Informs analysis of: democratic governance, WSN participation" },
+            { "id": "Q16", "text": "Do you feel that there is discrimination you face within this and/or in society (racism, sexism, ableism, etc.)? Have you or your colleagues already experienced some forms of discrimination?", "hint": "Informs analysis of: discrimination, social barriers" }
+          ]
+        },
+        {
+          "id": "assessment", "title": "Self-Assessment",
+          "questions": [
+            { "id": "Q17", "text": "Do you know what kinds of data your organisation collects regarding the social and environmental dimensions of its activities? Do you know if one or several assessment tools are used?", "hint": "Informs analysis of: assessment practices, data collection" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_c_managers",
+      "title": "Managers / Coordinators",
+      "shortTitle": "Managers",
+      "section": "C",
+      "category": "internal",
+      "categoryLabel": "Internal Stakeholders",
+      "icon": "📋",
+      "description": "Comprehensive interview guide for WISE managers covering background, mission, economics, governance, policy environment, and ecosystem relations.",
+      "estimatedTime": "60-90 minutes",
+      "themes": [
+        {
+          "id": "background", "title": "Background and Trajectory",
+          "questions": [
+            { "id": "Q1", "text": "Could you tell me about your background and what led you to join this work integration social enterprise? What has been your trajectory in the WISE?", "hint": "Informs analysis of: manager profile, pathway" }
+          ]
+        },
+        {
+          "id": "mission", "title": "Mission and Target Groups",
+          "questions": [
+            { "id": "Q2", "text": "How would you describe the mission of this WISE?", "hint": "Informs analysis of: mission framing" },
+            { "id": "Q3", "text": "Could you describe the work integration mission of the social enterprise? How has the work integration mission evolved over time?", "hint": "Informs analysis of: mission evolution" },
+            { "id": "Q4", "text": "Which are the key target groups? How and why have the target groups evolved over time?", "hint": "Informs analysis of: target group selection, evolution" },
+            { "id": "Q5", "text": "In your view, what are the main skills (basic, technical, social, digital) that WSNs acquire here? What kind of skills do you feel that the WISE is helping to develop?", "hint": "Informs analysis of: skills development" },
+            { "id": "Q6", "text": "How do you see the skills and empowerment of the WSNs developing as they work for this WISE? Are you in charge of assessing the progress of individual WSNs?", "hint": "Informs analysis of: empowerment, progress tracking" },
+            { "id": "Q7", "text": "What are the required skills of the supporters (workers supporting WSNs)? Do supporters need to have a formal certification?", "hint": "Informs analysis of: supporter qualifications" },
+            { "id": "Q8", "text": "Does the WISE provide for any training for its workers, both supporters and WSNs? Is the training ongoing?", "hint": "Informs analysis of: training provision" },
+            { "id": "Q9", "text": "Do you feel that there are discrimination issues related to this WISE (racism, sexism, ableism, etc.)?", "hint": "Informs analysis of: discrimination, social barriers" }
+          ]
+        },
+        {
+          "id": "history", "title": "General History of the Organisation",
+          "questions": [
+            { "id": "Q10", "text": "Could you tell me the story of this WISE since its creation, who founded it? How has the size evolved over time? Could you identify the most important moments or turning points?", "hint": "Informs analysis of: organisational trajectory, critical junctures" },
+            { "id": "Q11a", "text": "What is the legal form of the WISE? Why did the organisation choose this legal form? Do you think it is suitable, or would you like to change it?", "hint": "Informs analysis of: legal form, institutional framework" }
+          ]
+        },
+        {
+          "id": "production", "title": "Goods and Services / Clients",
+          "questions": [
+            { "id": "Q11b", "text": "What products or services does your organization provide?", "hint": "Informs analysis of: economic activity, market positioning" },
+            { "id": "Q12", "text": "Why did the organization choose to offer this particular type of goods or services? What motivated this focus?", "hint": "Informs analysis of: strategic choices" },
+            { "id": "Q13", "text": "What is your strategy regarding pricing, why, and how does it align with your mission?", "hint": "Informs analysis of: pricing strategy, mission-economics balance" },
+            { "id": "Q14", "text": "Who are your clients? To what extent are they different from those of your competitors or alternative providers?", "hint": "Informs analysis of: market position, client base" }
+          ]
+        },
+        {
+          "id": "economics", "title": "Economic Model",
+          "questions": [
+            { "id": "Q15", "text": "What were the major evolutions in your economic model over time?", "hint": "Informs analysis of: economic sustainability, evolution" },
+            { "id": "Q16", "text": "Are there any financial or economic challenges that make it hard for this WISE to fulfil its mission?", "hint": "Informs analysis of: financial challenges, sustainability" },
+            { "id": "Q17", "text": "In light of the stated mission and goals, what would be the ideal economic model (including revenue mix) required to effectively fulfil the mission?", "hint": "Informs analysis of: ideal vs actual economic model" },
+            { "id": "Q18", "text": "What do you see as the main challenges to make such an economic model feasible?", "hint": "Informs analysis of: barriers to sustainability" },
+            { "id": "Q19", "text": "Who do you see as your competitors or alternatives, and how do they influence your choices?", "hint": "Informs analysis of: competitive landscape" }
+          ]
+        },
+        {
+          "id": "governance", "title": "Management and Governance",
+          "questions": [
+            { "id": "Q20", "text": "How would you describe the management style in the organization (participative, top-down, etc.)?", "hint": "Informs analysis of: management style" },
+            { "id": "Q21", "text": "What approaches or practices do you use to support and motivate vulnerable workers?", "hint": "Informs analysis of: HR practices, worker support" },
+            { "id": "Q22", "text": "What is the type of governance of your organisation? How are decisions taken? By whom and how?", "hint": "Informs analysis of: governance structure" },
+            { "id": "Q23", "text": "Could you describe the responsibilities, roles and influence of the board within the WISE?", "hint": "Informs analysis of: board function" },
+            { "id": "Q24", "text": "Do you have volunteers in the WISE? What is their role? How important is it in your view?", "hint": "Informs analysis of: volunteering, workforce composition" },
+            { "id": "Q25", "text": "Do you see this WISE as successful? How do you qualify and measure this success?", "hint": "Informs analysis of: self-assessment, success criteria" },
+            { "id": "Q26", "text": "What challenges do you face in running the WISE?", "hint": "Informs analysis of: operational challenges" },
+            { "id": "Q27", "text": "What do you see as the main advantages or disadvantages of this WISE relative to other WISEs or to other enterprises providing the same type of goods/services?", "hint": "Informs analysis of: comparative positioning" },
+            { "id": "Q29", "text": "In what ways would you say that this WISE has a transformative capacity, for its beneficiaries and for the organization itself?", "hint": "Informs analysis of: transformative power" }
+          ]
+        },
+        {
+          "id": "ecosystem", "title": "Relations with Ecosystem",
+          "questions": [
+            { "id": "Q30", "text": "What policies or regulations most affect (positively or negatively) how your organisation operates?", "hint": "Informs analysis of: policy environment" },
+            { "id": "Q31", "text": "Is your organisation involved in policy discussions, consultations, or advocacy work? And how?", "hint": "Informs analysis of: political work, advocacy" },
+            { "id": "Q32", "text": "What policy changes would help organisations like yours succeed? Are there bottlenecks in policy support?", "hint": "Informs analysis of: policy needs" },
+            { "id": "Q33", "text": "Do local/public authorities support your organisation? How?", "hint": "Informs analysis of: public support" },
+            { "id": "Q34", "text": "Do you collaborate or have partnerships with mainstream enterprises? How?", "hint": "Informs analysis of: business partnerships" },
+            { "id": "Q35", "text": "Do you collaborate with social economy organisations? How?", "hint": "Informs analysis of: SE ecosystem" }
+          ]
+        },
+        {
+          "id": "landscape", "title": "Landscape Dynamics",
+          "questions": [
+            { "id": "Q36", "text": "Have broader societal, economic, technological, environmental trends affected the organisation?", "hint": "Informs analysis of: landscape pressures" },
+            { "id": "Q37", "text": "How has the organisation adapted in response?", "hint": "Informs analysis of: adaptive capacity" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_c_assessment",
+      "title": "Assessment Tools (for Managers)",
+      "shortTitle": "Assessment Tools",
+      "section": "C2",
+      "category": "internal",
+      "categoryLabel": "Internal Stakeholders",
+      "icon": "📊",
+      "description": "Supplementary questions for WISE managers about current and desired assessment/self-evaluation tools. Part of the WISESHIFT tool co-design process.",
+      "estimatedTime": "30-45 minutes",
+      "themes": [
+        {
+          "id": "current", "title": "Current State of Play",
+          "questions": [
+            { "id": "Q1", "text": "What kinds of data do you already collect regarding the social and environmental dimensions of your activities?", "hint": "Informs: current data practices" },
+            { "id": "Q2", "text": "Do you currently use one or several tools to assess either the social contribution/impact or the ecological contribution/impact of your activities?", "hint": "Informs: existing tool use" },
+            { "id": "Q3", "text": "If yes: What is this tool (or what are these tools)? What motivates you to use it/them? Are your motivations mainly internal (improvement), external (reporting), or both?", "hint": "Informs: tool motivations" },
+            { "id": "Q4", "text": "Do you feel a need for such tools? What resources (time, skills, money, training) do you currently allocate to collect such data or use such tools?", "hint": "Informs: resource allocation for assessment" },
+            { "id": "Q5", "text": "What challenges do you experience when collecting such data or using such tools? In your view, what are useful ways to mitigate these challenges?", "hint": "Informs: assessment challenges" },
+            { "id": "Q6", "text": "Are you required to use specific assessment tools or to provide certain social or environmental data (e.g., requested by your funders)?", "hint": "Informs: external requirements" },
+            { "id": "Q7", "text": "Do you know of any relevant tools that allow enterprises to self-assess their social and environmental contribution to inclusive and sustainable transition?", "hint": "Informs: tool awareness" }
+          ]
+        },
+        {
+          "id": "potential", "title": "Potential State of Play",
+          "questions": [
+            { "id": "Q8", "text": "Do you feel the need for (additional) assessment tools? What would motivate you to use them? Would your motivations be more internal or external?", "hint": "Informs: demand for tools" },
+            { "id": "Q9", "text": "Would you be willing to engage with an 'empowering tool' designed not only to assess but also to improve the WISE's contribution to sustainable and inclusive transition?", "hint": "Informs: willingness to engage" },
+            { "id": "Q10", "text": "In your opinion, what key characteristics should this 'empowering tool' have?", "hint": "Informs: tool design requirements" },
+            { "id": "Q11", "text": "What format would be more suitable? (a set of indicators, an online platform, a list of existing tools, a guide, a combination?)", "hint": "Informs: format preferences" },
+            { "id": "Q12", "text": "Who should be involved in the use of the tool inside your organisation?", "hint": "Informs: stakeholder involvement" },
+            { "id": "Q13", "text": "What pros and cons do you see in developing a 'collective dimension' in the use of the tool (i.e. using it not only at the individual organisation level)?", "hint": "Informs: collective vs individual use" },
+            { "id": "Q14", "text": "Would you expect the tool to provide a form of internal or external benchmarking?", "hint": "Informs: benchmarking expectations" },
+            { "id": "Q15", "text": "Do you see more value in standardised tools or in tailored ones? What are the pros and cons of each?", "hint": "Informs: standardisation vs customisation" },
+            { "id": "Q16", "text": "Would you be willing to participate in the co-design of the 'WISESHIFT tool'?", "hint": "Informs: co-design participation" },
+            { "id": "Q17", "text": "Have you ever heard of [country-specific assessment tools, e.g. SDPI, Social Profit Calculator, etc.]?", "hint": "Informs: awareness of existing tools" },
+            { "id": "Q18", "text": "Have you ever heard of the impact survey from ENSIE or RREUSE that collects data about the WISEs that they represent?", "hint": "Informs: network tool awareness" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_d_board",
+      "title": "Board Members / Governing Body",
+      "shortTitle": "Board Members",
+      "section": "D",
+      "category": "internal",
+      "categoryLabel": "Internal Stakeholders",
+      "icon": "🏛️",
+      "description": "Interview guide for board members or governing body representatives of the WISE.",
+      "estimatedTime": "30-45 minutes",
+      "themes": [
+        {
+          "id": "background", "title": "Background",
+          "questions": [
+            { "id": "Q1", "text": "Why did you choose to be part of the board? For how long have you been part of the board? What is your role on the board or governing body of this WISE?", "hint": "Informs: board composition, motivations" }
+          ]
+        },
+        {
+          "id": "mission", "title": "Mission",
+          "questions": [
+            { "id": "Q2", "text": "How do you see the mission and strategic direction of the WISE?", "hint": "Informs: mission framing from governance perspective" },
+            { "id": "Q3", "text": "What are the main strategic challenges currently facing this WISE?", "hint": "Informs: strategic challenges" }
+          ]
+        },
+        {
+          "id": "governance", "title": "Type of Governance",
+          "questions": [
+            { "id": "Q4", "text": "What are the most represented groups in the Board and the GA? How do they contribute to the WISE mission?", "hint": "Informs: governance composition" },
+            { "id": "Q5", "text": "Have governance structures, composition, priorities, or decision-making processes changed over time?", "hint": "Informs: governance evolution" }
+          ]
+        },
+        {
+          "id": "relations", "title": "Relations with Stakeholders",
+          "questions": [
+            { "id": "Q6", "text": "How does the board engage with managers, funders, public authorities, or networks?", "hint": "Informs: board's external relations" },
+            { "id": "Q7", "text": "What (regional, national and/or European) policy or institutional changes would strengthen WISEs like this one?", "hint": "Informs: policy needs" },
+            { "id": "Q8", "text": "Could you identify the moments or turning points that you consider the most important in the evolution/development of the WISE?", "hint": "Informs: critical junctures" },
+            { "id": "Q9", "text": "In what ways would you say that this WISE has a transformative capacity, for its beneficiaries, for the organization itself, and for WISEs or the broader social economy sector?", "hint": "Informs: transformative power" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_e_founders",
+      "title": "Founders",
+      "shortTitle": "Founders",
+      "section": "E",
+      "category": "internal",
+      "categoryLabel": "Internal Stakeholders",
+      "icon": "🌱",
+      "description": "Interview guide for the founder(s) of the WISE — capturing the origin story, motivations, and vision.",
+      "estimatedTime": "20-30 minutes",
+      "themes": [
+        {
+          "id": "background", "title": "Background and History",
+          "questions": [
+            { "id": "Q1", "text": "What motivated you to establish this WISE?", "hint": "Informs: founding motivations, social mission origins" },
+            { "id": "Q2", "text": "How has the WISE changed since it started? What have been the main turning points in the history of the WISE?", "hint": "Informs: organisational trajectory" },
+            { "id": "Q3", "text": "What has been the biggest barrier(s) you faced in establishing this WISE?", "hint": "Informs: institutional barriers, niche creation" }
+          ]
+        },
+        {
+          "id": "mission_future", "title": "Mission and Future",
+          "questions": [
+            { "id": "Q4", "text": "What achievements of this WISE are you most proud of?", "hint": "Informs: perceived outcomes, success criteria" },
+            { "id": "Q5", "text": "What do you hope the future holds for this WISE?", "hint": "Informs: vision, aspirations" },
+            { "id": "Q6", "text": "In what ways would you say that this WISE has a transformative capacity, for its beneficiaries, for the organization itself, and for WISEs or the broader social economy sector?", "hint": "Informs: transformative power" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_f_funders",
+      "title": "Funders / Government Officials / Philanthropy",
+      "shortTitle": "Funders",
+      "section": "F",
+      "category": "external",
+      "categoryLabel": "External Stakeholders",
+      "icon": "💰",
+      "description": "Interview guide for funders, government officials, or philanthropic organisations that support this specific WISE.",
+      "estimatedTime": "30-45 minutes",
+      "themes": [
+        {
+          "id": "background", "title": "Background",
+          "questions": [
+            { "id": "Q1", "text": "How would you describe this WISE? Why did your organisation decide to support or fund this WISE? What does your organisation expect in return?", "hint": "Informs: funder perspective, expectations" }
+          ]
+        },
+        {
+          "id": "landscape", "title": "Landscape Dynamics and Policy",
+          "questions": [
+            { "id": "Q2", "text": "What (regional, national, European) policies or funding frameworks most affect positively or negatively this WISE?", "hint": "Informs: policy environment from funder view" },
+            { "id": "Q3", "text": "How do you assess this WISE's results or outcomes? If any, list the indicators.", "hint": "Informs: assessment criteria, accountability" },
+            { "id": "Q4", "text": "What change, if any, is necessary for the WISEs to continue delivering their mission?", "hint": "Informs: sustainability conditions" },
+            { "id": "Q5", "text": "Is your organisation involved in policy discussions, consultations, or advocacy work on behalf of this WISE and SEOs in general?", "hint": "Informs: funder advocacy role" },
+            { "id": "Q6", "text": "What public policy changes would help organisations like this WISE succeed? Are there bottlenecks in providing policy support?", "hint": "Informs: policy gaps" }
+          ]
+        },
+        {
+          "id": "relations", "title": "Relations with Stakeholders",
+          "questions": [
+            { "id": "Q7", "text": "In your view, do local/public authorities support this WISE and similar SEOs?", "hint": "Informs: public authority support" },
+            { "id": "Q8", "text": "Does this WISE collaborate or have partnerships with mainstream enterprises? How?", "hint": "Informs: business partnerships" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_g_networks",
+      "title": "WISEs' Networks / Federations",
+      "shortTitle": "Networks",
+      "section": "G",
+      "category": "external",
+      "categoryLabel": "External Stakeholders",
+      "icon": "🔗",
+      "description": "Interview guide for representatives of networks, federations, or NGOs that work with this WISE. Includes questions about assessment tools.",
+      "estimatedTime": "45-60 minutes",
+      "themes": [
+        {
+          "id": "background", "title": "Background and Mission",
+          "questions": [
+            { "id": "Q0", "text": "What does your organisation do? Please briefly present its mission and main objectives.", "hint": "Informs: network context" },
+            { "id": "Q1", "text": "How would you describe the WISE – its activities, its mission? Why, how and in what ways does this Network/Federation/NGO collaborate with this WISE?", "hint": "Informs: network-WISE relationship" },
+            { "id": "Q2", "text": "How does this WISE align with the organisational mission of this Network/Federation/NGO?", "hint": "Informs: alignment, strategic fit" },
+            { "id": "Q3", "text": "Do your members use tools or indicators to assess social or environmental contribution of this WISE?", "hint": "Informs: assessment practices at network level" }
+          ]
+        },
+        {
+          "id": "relations", "title": "Relations and Collaboration",
+          "questions": [
+            { "id": "Q4", "text": "How could networks/federations/NGOs better support WISEs like this one?", "hint": "Informs: support gaps" },
+            { "id": "Q5", "text": "What gaps or needs do you see in your collaboration?", "hint": "Informs: collaboration challenges" },
+            { "id": "Q6", "text": "What strengths and challenges do you see in your collaboration?", "hint": "Informs: collaboration quality" },
+            { "id": "Q7", "text": "Are there any policy and regulation that affect positively or negatively the contribution of WISEs?", "hint": "Informs: policy environment" },
+            { "id": "Q8", "text": "Does your network/federation/NGO collaborate with other social economy organisations? How? In what ways?", "hint": "Informs: SE ecosystem" },
+            { "id": "Q9", "text": "Does this network/federation/NGO collaborate with other stakeholders (civil society, volunteers, customers, NGOs)? How?", "hint": "Informs: broader ecosystem" },
+            { "id": "Q10", "text": "In what ways would you say that this WISE has a transformative capacity in relation to other actors?", "hint": "Informs: transformative power at system level" }
+          ]
+        },
+        {
+          "id": "assessment_current", "title": "Assessment Tools — Current",
+          "questions": [
+            { "id": "AQ1", "text": "Do you know what kinds of data your members collect regarding the social and environmental dimensions of their activities?", "hint": "Informs: member data practices" },
+            { "id": "AQ2", "text": "And what about you as a federation/network: do you collect data or use tools linked to social and environmental dimensions of your members' activities?", "hint": "Informs: network-level assessment" },
+            { "id": "AQ3", "text": "What challenges do you experience when collecting such data? What are useful ways to mitigate these challenges?", "hint": "Informs: data collection challenges" },
+            { "id": "AQ4", "text": "Do you require or recommend that your members use specific tools? Do you request specific social or environmental data from them?", "hint": "Informs: network requirements" },
+            { "id": "AQ5", "text": "What resources (time, skills, money) are required to collect such data or use such tools? Do you provide training?", "hint": "Informs: resource requirements" }
+          ]
+        },
+        {
+          "id": "assessment_potential", "title": "Assessment Tools — Potential",
+          "questions": [
+            { "id": "AQ6", "text": "In your opinion, what are your members' needs regarding such tools? What would motivate them to use (or not use) such tools?", "hint": "Informs: member needs" },
+            { "id": "AQ7", "text": "Do you see more value in standardised tools or in tailored ones? What are the pros and cons of each?", "hint": "Informs: standardisation preferences" },
+            { "id": "AQ8", "text": "Have you ever heard of [country-specific assessment tools]?", "hint": "Informs: tool awareness" },
+            { "id": "AQ9", "text": "Have you ever heard of the impact survey from ENSIE or RREUSE?", "hint": "Informs: network tool awareness" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_g2_customers",
+      "title": "Customers / Service Users",
+      "shortTitle": "Customers",
+      "section": "G2",
+      "category": "external",
+      "categoryLabel": "External Stakeholders",
+      "icon": "🛒",
+      "description": "Brief interview guide for customers or service users of the WISE's goods/services.",
+      "estimatedTime": "15-20 minutes",
+      "themes": [
+        {
+          "id": "background", "title": "Background",
+          "questions": [
+            { "id": "Q1", "text": "How did you first hear about this WISE?", "hint": "Informs: outreach, visibility" },
+            { "id": "Q2", "text": "Why did you decide to use its services or products?", "hint": "Informs: customer motivations" }
+          ]
+        },
+        {
+          "id": "relations", "title": "Experience and Relations",
+          "questions": [
+            { "id": "Q3", "text": "What do you value most about this WISE? How is it different from other service providers in this sector?", "hint": "Informs: competitive advantage, value proposition" },
+            { "id": "Q4", "text": "Have you noticed any changes in your local community/area since this WISE started? (Optional)", "hint": "Informs: community impact" },
+            { "id": "Q5", "text": "Would you recommend this WISE to others? Why? If not, what could be improved?", "hint": "Informs: customer satisfaction, reputation" }
+          ]
+        },
+        {
+          "id": "mission", "title": "Mission Awareness",
+          "questions": [
+            { "id": "Q6", "text": "Are you familiar with the social, environmental and work integration mission of this WISE? Is the social/environmental mission of this WISE important for you as a customer?", "hint": "Informs: mission visibility, social purchasing" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_h_business",
+      "title": "Business Partners",
+      "shortTitle": "Business Partners",
+      "section": "H",
+      "category": "external",
+      "categoryLabel": "External Stakeholders",
+      "icon": "🏢",
+      "description": "Interview guide for business partners who collaborate with or contract the WISE.",
+      "estimatedTime": "20-30 minutes",
+      "themes": [
+        {
+          "id": "relations", "title": "Partnership and Relations",
+          "questions": [
+            { "id": "Q0", "text": "How would you describe this WISE (its activities, its mission)? Please describe the nature of your 'partnership' with the WISE.", "hint": "Informs: partner perspective" },
+            { "id": "Q1", "text": "Why does this business choose to work with this WISE? What were the initial drivers/motivations? For how long have you developed this partnership?", "hint": "Informs: partnership motivations, duration" },
+            { "id": "Q2", "text": "What benefits and challenges does the partnership bring for you and for the WISE?", "hint": "Informs: partnership value" }
+          ]
+        },
+        {
+          "id": "trajectory", "title": "Trajectory and Future",
+          "questions": [
+            { "id": "Q3", "text": "How has this partnership evolved over time? How do you see the future of this partnership?", "hint": "Informs: partnership evolution" },
+            { "id": "Q4", "text": "What gaps or needs do you see in your partnership? How could you overcome/address them?", "hint": "Informs: improvement opportunities" }
+          ]
+        },
+        {
+          "id": "landscape", "title": "Policy and Assessment",
+          "questions": [
+            { "id": "Q5", "text": "Are there (regional, national, European, sectoral) policies or regulations that influence your ability to collaborate with this WISE?", "hint": "Informs: policy enablers/barriers" },
+            { "id": "Q6", "text": "Do you assess the work of this WISE? If yes, do you have indicators? If any, please list them.", "hint": "Informs: partner assessment practices" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "int_i_policy",
+      "title": "Key Informants / Policy Advisers",
+      "shortTitle": "Policy Advisers",
+      "section": "I",
+      "category": "external",
+      "categoryLabel": "External Stakeholders",
+      "icon": "🎓",
+      "description": "Interview guide for key informants such as policy advisers, policy development staff, and academics with expertise in WISEs and social economy.",
+      "estimatedTime": "20-30 minutes",
+      "themes": [
+        {
+          "id": "trajectory", "title": "Trajectory and Scaling",
+          "questions": [
+            { "id": "Q1", "text": "What barriers exist to scaling, replicating and/or mainstreaming this type of WISE?", "hint": "Informs: scaling barriers" },
+            { "id": "Q2", "text": "What opportunities currently exist for WISEs? To what extent do these opportunities suggest that WISEs have been influencing mainstream policy or practice?", "hint": "Informs: policy influence, opportunities" },
+            { "id": "Q3", "text": "How have WISEs influenced mainstream policy or practice?", "hint": "Informs: policy influence track record" }
+          ]
+        },
+        {
+          "id": "governance", "title": "Governance and Capacity",
+          "questions": [
+            { "id": "Q4", "text": "What skills, knowledge, or capacities do you think would help SEOs like this WISE to make better use of the policies or support schemes that already exist?", "hint": "Informs: capacity building needs" }
+          ]
+        }
+      ]
+    }
+  ]
+}

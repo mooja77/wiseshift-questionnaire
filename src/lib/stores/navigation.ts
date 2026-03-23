@@ -2,11 +2,19 @@ import { writable, derived } from 'svelte/store';
 import questionnaire from '$lib/data/questionnaire.json';
 import { answers, visibleQuestions } from './answers';
 
-export type AppPage = 'welcome' | 'questionnaire' | 'review' | 'export';
+export type AppPage = 'welcome' | 'dashboard' | 'questionnaire' | 'interview' | 'review' | 'export';
 
 export const currentPage = writable<AppPage>('welcome');
 export const currentSectionIndex = writable(0);
 export const currentGroupIndex = writable(0);
+
+// Current case study context
+export const currentWiseName = writable('');
+export const currentCountry = writable('');
+
+// Current interview instrument (for interview pages)
+export const currentInstrumentId = writable<string | null>(null);
+export const currentInterviewCloudId = writable<string | null>(null);
 
 export const sections = questionnaire.sections;
 
@@ -64,4 +72,14 @@ export function startQuestionnaire() {
   currentSectionIndex.set(0);
   currentGroupIndex.set(0);
   currentPage.set('questionnaire');
+}
+
+export function goToDashboard() {
+  currentPage.set('dashboard');
+}
+
+export function startInterview(instrumentId: string, cloudId?: string) {
+  currentInstrumentId.set(instrumentId);
+  currentInterviewCloudId.set(cloudId || null);
+  currentPage.set('interview');
 }
