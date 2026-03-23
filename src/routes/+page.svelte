@@ -2,6 +2,7 @@
   import { currentPage, currentSectionIndex, currentGroupIndex, sections, startQuestionnaire, nextGroup, prevGroup, goToSection } from '$lib/stores/navigation';
   import { answers, visibleQuestions, lastSaved, cloudStatus, cloudId } from '$lib/stores/answers';
   import { cloudList, cloudLoad } from '$lib/supabase';
+  import { downloadPDF } from '$lib/utils/pdfExport';
   import { progress } from '$lib/stores/progress';
   import questionnaire from '$lib/data/questionnaire.json';
 
@@ -131,6 +132,10 @@
     }
     const csv = rows.map(r => r.join(',')).join('\n');
     downloadBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), getFilenameBase() + '.csv');
+  }
+
+  function handleExportPDF() {
+    downloadPDF(allAnswers, visible);
   }
 
   function triggerCelebration(text: string) {
@@ -469,6 +474,20 @@
             </div>
             {/if}
 
+            <!-- N/A toggle -->
+            <div class="flex items-center justify-end mb-2">
+              <button
+                onclick={() => handleAnswer(q.id + '__na', allAnswers[q.id + '__na']?.value ? false : true)}
+                class="text-xs px-2 py-1 rounded transition-colors {allAnswers[q.id + '__na']?.value ? 'bg-[var(--color-text-secondary)] text-white' : 'text-[var(--color-text-secondary)] hover:bg-[var(--color-border-light)]'}"
+              >N/A</button>
+            </div>
+
+            {#if allAnswers[q.id + '__na']?.value}
+            <div class="text-sm text-[var(--color-text-secondary)] italic bg-[var(--color-background)] rounded-lg p-3">
+              Marked as not available / not applicable
+            </div>
+            {:else}
+
             <!-- Input based on type -->
             {#if q.type === 'text' || q.type === 'year'}
             <input
@@ -568,6 +587,38 @@
                 class="w-full h-12 px-4 border border-[var(--color-border)] rounded-lg text-[var(--color-text)] bg-[var(--color-surface)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none text-right font-mono"
               />
             </div>
+
+            {:else if q.type === 'currency_pct'}
+            <!-- Currency + percentage (revenue table items) -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <div class="flex items-center gap-2 flex-1">
+                <span class="text-[var(--color-text-secondary)] font-mono text-sm flex-shrink-0">{allAnswers['Q4.1']?.value || '€'}</span>
+                <input
+                  type="number"
+                  value={allAnswers[q.id]?.value ?? ''}
+                  oninput={(e) => handleAnswer(q.id, (e.target as HTMLInputElement).value ? Number((e.target as HTMLInputElement).value) : null)}
+                  placeholder="Amount"
+                  class="w-full h-11 px-3 border border-[var(--color-border)] rounded-lg text-right font-mono text-sm"
+                />
+              </div>
+              <div class="flex items-center gap-1 sm:w-28 flex-shrink-0">
+                <input
+                  type="number" min="0" max="100"
+                  value={allAnswers[q.id + '_pct']?.value ?? ''}
+                  oninput={(e) => handleAnswer(q.id + '_pct', (e.target as HTMLInputElement).value ? Number((e.target as HTMLInputElement).value) : null)}
+                  placeholder="%"
+                  class="w-full h-11 px-3 border border-[var(--color-border)] rounded-lg text-right font-mono text-sm"
+                />
+                <span class="text-[var(--color-text-secondary)] text-sm flex-shrink-0">%</span>
+              </div>
+            </div>
+            {#if q.hasTextField}
+            <input type="text" placeholder="Please specify…"
+              value={allAnswers[q.id + '_specify']?.value || ''}
+              oninput={(e) => handleAnswer(q.id + '_specify', (e.target as HTMLInputElement).value)}
+              class="w-full h-10 px-3 mt-2 border border-[var(--color-border)] rounded-lg text-sm"
+            />
+            {/if}
 
             {:else if q.type === 'percentage_table'}
             <div class="space-y-3">
@@ -1068,15 +1119,79 @@
               </div>
             </div>
 
-            {:else if q.type === 'board_matrix' || q.type === 'board_sector_matrix' || q.type === 'ranking_text'}
-            <!-- Board matrix / ranking text — simplified as textarea -->
-            <textarea
-              value={allAnswers[q.id]?.value || ''}
-              oninput={(e) => handleAnswer(q.id, (e.target as HTMLTextAreaElement).value)}
-              rows="5"
-              placeholder={q.type === 'ranking_text' ? 'List items in order of importance (1 per line):\n1. ...\n2. ...\n3. ...' : 'Please describe the board composition...'}
-              class="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-[var(--color-text)] bg-[var(--color-surface)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none resize-y text-sm"
-            ></textarea>
+            {:else if q.type === 'ranking_text'}
+            <!-- Ranked text list -->
+            <div class="space-y-2">
+              {#each Array.from({length: q.maxItems || 5}, (_, i) => i + 1) as rank}
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-mono text-[var(--color-primary)] w-6 flex-shrink-0 text-right">{rank}.</span>
+                <input type="text"
+                  value={allAnswers[q.id + '_rank' + rank]?.value || ''}
+                  oninput={(e) => handleAnswer(q.id + '_rank' + rank, (e.target as HTMLInputElement).value)}
+                  placeholder="Most {rank === 1 ? 'important' : rank === 2 ? 'second most important' : 'next'}..."
+                  class="flex-1 h-10 px-3 border border-[var(--color-border)] rounded-lg text-sm"
+                />
+              </div>
+              {/each}
+            </div>
+
+            {:else if q.type === 'board_matrix'}
+            <!-- Board composition — repeating member rows -->
+            <div class="space-y-3">
+              <p class="text-xs text-[var(--color-text-secondary)]">Add board members. Mark up to 3 as most influential.</p>
+              {#each Array.from({length: 8}, (_, i) => i + 1) as idx}
+              <div class="flex flex-col sm:flex-row gap-2 bg-[var(--color-background)] rounded-lg p-3 {allAnswers[q.id + '_m' + idx + '_name']?.value ? '' : 'opacity-60'}">
+                <input type="text"
+                  value={allAnswers[q.id + '_m' + idx + '_name']?.value || ''}
+                  oninput={(e) => handleAnswer(q.id + '_m' + idx + '_name', (e.target as HTMLInputElement).value)}
+                  placeholder="Member {idx} name / role"
+                  class="flex-1 h-9 px-3 border border-[var(--color-border)] rounded-lg text-sm"
+                />
+                <input type="number" min="0"
+                  value={allAnswers[q.id + '_m' + idx + '_count']?.value ?? ''}
+                  oninput={(e) => handleAnswer(q.id + '_m' + idx + '_count', (e.target as HTMLInputElement).value ? Number((e.target as HTMLInputElement).value) : null)}
+                  placeholder="# persons"
+                  class="w-24 h-9 px-3 border border-[var(--color-border)] rounded-lg text-sm text-right font-mono"
+                />
+                <label class="flex items-center gap-1 text-xs text-[var(--color-text-secondary)] flex-shrink-0">
+                  <input type="checkbox"
+                    checked={allAnswers[q.id + '_m' + idx + '_influential']?.value === true}
+                    onchange={(e) => handleAnswer(q.id + '_m' + idx + '_influential', (e.target as HTMLInputElement).checked)}
+                    class="w-4 h-4 rounded"
+                  />
+                  Influential
+                </label>
+              </div>
+              {/each}
+            </div>
+
+            {:else if q.type === 'board_sector_matrix'}
+            <!-- Board sector classification -->
+            <div class="space-y-3">
+              {#each q.sectors as sector}
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 bg-[var(--color-background)] rounded-lg p-3">
+                <span class="flex-1 text-sm text-[var(--color-text)]">{sector.label}</span>
+                <div class="flex items-center gap-3">
+                  <div class="flex items-center gap-1">
+                    <span class="text-xs text-[var(--color-text-secondary)]"># persons</span>
+                    <input type="number" min="0"
+                      value={allAnswers[q.id + '_' + sector.value + '_count']?.value ?? ''}
+                      oninput={(e) => handleAnswer(q.id + '_' + sector.value + '_count', (e.target as HTMLInputElement).value ? Number((e.target as HTMLInputElement).value) : null)}
+                      class="w-20 h-9 px-2 border border-[var(--color-border)] rounded-lg text-sm text-right font-mono"
+                    />
+                  </div>
+                  <label class="flex items-center gap-1 text-xs text-[var(--color-text-secondary)] flex-shrink-0">
+                    <input type="radio" name={q.id + '_influential'}
+                      checked={allAnswers[q.id + '_influential']?.value === sector.value}
+                      onchange={() => handleAnswer(q.id + '_influential', sector.value)}
+                      class="w-4 h-4"
+                    />
+                    Most influential
+                  </label>
+                </div>
+              </div>
+              {/each}
+            </div>
 
             {:else}
             <!-- Fallback for any remaining types -->
@@ -1087,6 +1202,9 @@
               class="w-full px-4 py-3 border border-[var(--color-border)] rounded-lg text-[var(--color-text)] bg-[var(--color-surface)] focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary-light)] outline-none resize-y"
             ></textarea>
             {/if}
+
+            {/if}
+            <!-- end N/A wrapper -->
           </div>
           {/each}
         </div>
@@ -1135,6 +1253,10 @@
     </button>
     <h1 class="text-sm sm:text-lg font-semibold text-[var(--color-text)] truncate">Review</h1>
     <div class="flex gap-1.5 sm:gap-2 flex-shrink-0">
+      <button onclick={handleExportPDF}
+        class="px-2.5 sm:px-4 h-9 sm:h-10 rounded-lg bg-[var(--color-success)] text-white text-xs sm:text-sm font-medium hover:opacity-90 transition-colors">
+        PDF
+      </button>
       <button onclick={handleExportJSON}
         class="px-2.5 sm:px-4 h-9 sm:h-10 rounded-lg bg-[var(--color-primary)] text-white text-xs sm:text-sm font-medium hover:bg-[var(--color-primary-dark)] transition-colors">
         JSON
@@ -1205,6 +1327,10 @@
 
     <!-- Export buttons -->
     <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center mt-8 sm:mt-10 pb-8 sm:pb-10">
+      <button onclick={handleExportPDF}
+        class="px-6 h-12 rounded-xl bg-[var(--color-success)] text-white font-semibold text-sm sm:text-base hover:opacity-90 transition-all shadow-sm w-full sm:w-auto">
+        Download PDF
+      </button>
       <button onclick={handleExportJSON}
         class="px-6 h-12 rounded-xl bg-[var(--color-primary)] text-white font-semibold text-sm sm:text-base hover:bg-[var(--color-primary-dark)] transition-all shadow-sm w-full sm:w-auto">
         Download JSON

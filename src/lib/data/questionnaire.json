@@ -653,7 +653,35 @@
         { "value": "no_shares", "label": "GA/AGM without shares (association or NPO)" },
         { "value": "shares", "label": "GA/AGM with shares (cooperative or company)" }
       ],
-      "required": true
+      "required": true,
+      "appendixF": "This question aims to distinguish non-profit organisations with members from those without members, as well as companies with shares from companies without shares, as this has implications in terms of governance."
+    },
+    "Q3.5": {
+      "id": "Q3.5",
+      "number": "Q3.5",
+      "text": "Where does the ultimate decision-making power lie?",
+      "hint": "The governance body that makes or confirms the most important decisions.",
+      "type": "single_tick",
+      "options": [
+        { "value": "general_assembly", "label": "General Assembly / Annual General Meeting" },
+        { "value": "board", "label": "Board of Directors" },
+        { "value": "ceo_manager", "label": "CEO / Manager" },
+        { "value": "parent_org", "label": "Parent organisation" },
+        { "value": "other", "label": "Other", "hasTextField": true }
+      ],
+      "appendixF": "The ultimate decision-making power does not mean the power to make most decisions. It refers to the governance body that makes or confirms the most important decisions."
+    },
+    "Q3.6": {
+      "id": "Q3.6",
+      "number": "Q3.6",
+      "text": "Does the WISE have a formal General Assembly or Annual General Meeting (GA/AGM)?",
+      "type": "yes_no"
+    },
+    "Q3.7": {
+      "id": "Q3.7",
+      "number": "Q3.7",
+      "text": "Does the WISE have a Board of Directors or equivalent governing body?",
+      "type": "yes_no"
     },
     "Q3.8_ns": {
       "id": "Q3.8_ns",
@@ -814,45 +842,45 @@
       "number": "Q4.4a",
       "text": "Sales to private and public customers",
       "groupLabel": "Revenues of the WISE",
-      "type": "currency"
+      "type": "currency_pct"
     },
     "Q4.4b": {
       "id": "Q4.4b",
       "number": "Q4.4b",
       "text": "Of which: public sales account for",
       "hint": "Subset of Q4.4a — how much of total sales comes from public customers?",
-      "type": "currency"
+      "type": "currency_pct"
     },
     "Q4.5": {
       "id": "Q4.5",
       "number": "Q4.5",
       "text": "Public grants/subsidies (money coming from public entities except sales)",
-      "type": "currency"
+      "type": "currency_pct"
     },
     "Q4.6": {
       "id": "Q4.6",
       "number": "Q4.6",
       "text": "Investment income (rental of buildings, interest or dividends of financial assets…)",
-      "type": "currency"
+      "type": "currency_pct"
     },
     "Q4.7": {
       "id": "Q4.7",
       "number": "Q4.7",
       "text": "Philanthropic monetary resources (gifts, donations, private grants…)",
-      "type": "currency"
+      "type": "currency_pct"
     },
     "Q4.8": {
       "id": "Q4.8",
       "number": "Q4.8",
       "text": "Membership income",
-      "type": "currency"
+      "type": "currency_pct"
     },
     "Q4.9": {
       "id": "Q4.9",
       "number": "Q4.9",
       "text": "Other revenue",
       "hint": "Please specify.",
-      "type": "currency",
+      "type": "currency_pct",
       "hasTextField": true
     },
     "Q4.10": {
