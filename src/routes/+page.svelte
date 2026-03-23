@@ -44,10 +44,10 @@
     }
   }
 
-  // Load cloud list on mount
-  if (typeof window !== 'undefined') {
+  // Load cloud list on mount — use $effect for reliable SSR-safe loading
+  $effect(() => {
     loadCloudList();
-  }
+  });
 
   // Get questions for current group
   let groupQuestions = $derived(
@@ -262,29 +262,46 @@
     </div>
 
     <!-- Cloud saved questionnaires -->
-    {#if cloudQuestionnaires.length > 0}
     <div class="mt-6 sm:mt-8">
-      <h3 class="text-sm font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide mb-3">Saved in Cloud</h3>
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-sm font-semibold text-[var(--color-text-secondary)] uppercase tracking-wide">Saved Questionnaires</h3>
+        <button onclick={loadCloudList} class="text-xs text-[var(--color-primary)] hover:underline">
+          {loadingCloud ? 'Loading...' : 'Refresh'}
+        </button>
+      </div>
+
+      {#if loadingCloud}
+      <div class="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-4 text-center">
+        <span class="text-sm text-[var(--color-text-secondary)]">Loading saved questionnaires from cloud...</span>
+      </div>
+      {:else if cloudQuestionnaires.length === 0}
+      <div class="bg-[var(--color-surface)] border border-[var(--color-border-light)] rounded-lg p-4 text-center">
+        <span class="text-sm text-[var(--color-text-secondary)]">No saved questionnaires yet. Start a new one above.</span>
+      </div>
+      {:else}
       <div class="space-y-2">
         {#each cloudQuestionnaires as cq}
         <button
           onclick={() => handleLoadFromCloud(cq.id)}
-          class="w-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg p-3 sm:p-4 text-left hover:border-[var(--color-primary)] hover:shadow-sm transition-all"
+          class="w-full bg-[var(--color-surface)] border-2 border-[var(--color-border)] rounded-xl p-4 sm:p-5 text-left hover:border-[var(--color-primary)] hover:shadow-md transition-all group"
         >
-          <div class="flex items-center justify-between gap-2">
-            <div class="min-w-0">
-              <span class="text-sm font-medium text-[var(--color-text)] block truncate">{cq.wise_name || 'Untitled'}</span>
-              <span class="text-xs text-[var(--color-text-secondary)]">
-                {cq.country ? cq.country + ' · ' : ''}{new Date(cq.updated_at).toLocaleDateString()}
+          <div class="flex items-center gap-3 sm:gap-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-success-light)] rounded-xl flex items-center justify-center text-lg sm:text-xl flex-shrink-0 group-hover:bg-[var(--color-success)] group-hover:text-white transition-colors">
+              📋
+            </div>
+            <div class="flex-1 min-w-0">
+              <span class="text-sm sm:text-base font-semibold text-[var(--color-text)] block truncate">{cq.wise_name || 'Untitled Questionnaire'}</span>
+              <span class="text-xs sm:text-sm text-[var(--color-text-secondary)]">
+                {cq.country ? cq.country + ' · ' : ''}Last saved {new Date(cq.updated_at).toLocaleDateString()} at {new Date(cq.updated_at).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}
               </span>
             </div>
-            <span class="text-xs text-[var(--color-primary)] flex-shrink-0">Load →</span>
+            <span class="text-xs sm:text-sm text-[var(--color-primary)] font-medium flex-shrink-0 group-hover:underline">Open →</span>
           </div>
         </button>
         {/each}
       </div>
+      {/if}
     </div>
-    {/if}
 
     <!-- Footer -->
     <p class="text-center text-[10px] sm:text-xs text-[var(--color-text-secondary)] mt-8 sm:mt-12 leading-relaxed px-2">
