@@ -115,6 +115,12 @@
         const data = JSON.parse(e.target?.result as string);
         if (data.answers) {
           answers.loadAnswers(data.answers);
+          const total = Object.keys(data.answers).length;
+          const prefilled = Object.values(data.answers).filter((a: any) => a.prefilled).length;
+          const wiseName = data.meta?.wiseName || data.answers['Q1.1']?.value || 'Unknown';
+          if (prefilled > 0) {
+            alert(`Loaded pre-filled data for "${wiseName}".\n\n${prefilled} answers pre-filled from desk research.\nPlease review and confirm each answer during the interview.`);
+          }
           startQuestionnaire();
         }
       } catch (err) {
@@ -368,10 +374,18 @@
 
             <!-- Pre-fill badge -->
             {#if allAnswers[q.id]?.prefilled}
-            <div class="mb-3 inline-flex items-center gap-1 text-xs font-medium text-[var(--color-warning)] bg-[var(--color-warning-light)] px-2 py-1 rounded">
-              Pre-filled from desk research
-              {#if allAnswers[q.id]?.confirmed}
-              <span class="text-[var(--color-success)]">· Confirmed ✓</span>
+            <div class="mb-3 flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-[var(--color-warning)] bg-[var(--color-warning-light)] px-2 py-1 rounded">
+                Pre-filled from desk research
+                {#if allAnswers[q.id]?.confirmed}
+                <span class="text-[var(--color-success)]">· Confirmed ✓</span>
+                {/if}
+              </span>
+              {#if !allAnswers[q.id]?.confirmed}
+              <button
+                onclick={() => answers.confirmPrefill(q.id)}
+                class="text-xs font-medium text-[var(--color-primary)] bg-[var(--color-primary-light)] px-2 py-1 rounded hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+              >Confirm ✓</button>
               {/if}
             </div>
             {/if}
