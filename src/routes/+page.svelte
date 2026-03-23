@@ -1,6 +1,6 @@
 <script lang="ts">
   import { currentPage, currentSectionIndex, currentGroupIndex, sections, startQuestionnaire, nextGroup, prevGroup, goToSection } from '$lib/stores/navigation';
-  import { answers, visibleQuestions } from '$lib/stores/answers';
+  import { answers, visibleQuestions, lastSaved } from '$lib/stores/answers';
   import { progress } from '$lib/stores/progress';
   import questionnaire from '$lib/data/questionnaire.json';
 
@@ -13,6 +13,7 @@
   let prog = $derived($progress);
   let visible = $derived($visibleQuestions);
   let allAnswers = $derived($answers);
+  let savedTime = $derived($lastSaved);
 
   // Get questions for current group
   let groupQuestions = $derived(
@@ -282,7 +283,13 @@
           ← Back to start
         </button>
       </div>
-      <span class="text-xs text-[var(--color-success)] font-medium">Saved ✓</span>
+      <span class="text-xs font-medium {savedTime ? 'text-[var(--color-success)]' : 'text-[var(--color-text-secondary)]'}">
+        {#if savedTime}
+          Saved at {savedTime} ✓
+        {:else}
+          Auto-save active
+        {/if}
+      </span>
     </header>
 
     <!-- Mobile sidebar overlay -->

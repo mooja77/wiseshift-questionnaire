@@ -1,6 +1,8 @@
 import { writable, derived } from 'svelte/store';
 import questionnaire from '$lib/data/questionnaire.json';
 
+export const lastSaved = writable<string | null>(null);
+
 export interface Answer {
   value: any;
   prefilled?: boolean;
@@ -45,6 +47,7 @@ function createAnswersStore() {
           answers
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        lastSaved.set(new Date().toLocaleTimeString());
       } catch (e) {
         console.warn('Failed to save answers:', e);
       }
